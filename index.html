@@ -41,15 +41,25 @@
       background-position: 0 0, 18px 18px, 0 0;
       border-bottom: 5px solid var(--done-orange);
       box-shadow: 0 4px 16px rgba(90, 56, 38, 0.14);
-      padding: 1.8rem 1rem 1.6rem;
+      padding: 3.4rem 1rem 3rem;
       text-align: center;
+      transition: padding 0.35s ease;
+    }
+    header.is-compact {
+      padding: 1.8rem 1rem 1.6rem;
     }
     .header-logo {
-      max-width: min(500px, 92%);
+      width: 640px;
+      max-width: 94%;
       height: auto;
       display: block;
       margin: 0 auto;
       filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.25));
+      transition: width 0.35s ease, max-width 0.35s ease;
+    }
+    header.is-compact .header-logo {
+      width: 500px;
+      max-width: 92%;
     }
     #fallbackTitle { display: none; margin: 0; font-size: 1.6rem; color: #FFFDF9; }
 
@@ -748,7 +758,10 @@
     }
 
     @media (max-width: 640px) {
-      header { padding: 1.25rem 0.8rem; }
+      header { padding: 2.3rem 0.8rem 2rem; }
+      header.is-compact { padding: 1.25rem 0.8rem; }
+      .header-logo { width: 380px; max-width: 94%; }
+      header.is-compact .header-logo { width: 260px; max-width: 82%; }
       .sticky-nav { padding: 0.42rem 0.3rem; }
       .sticky-nav-inner { gap: 0.2rem; }
       .nav-link { font-size: 0.7rem; padding: 0.32rem 0.48rem; }
@@ -1256,7 +1269,19 @@
     }
 
     const sections = ["sec-top", "sec-profile", "sec-map", "sec-roulette", "sec-search"];
+    const siteHeader = document.getElementById("sec-top");
+    let isHeaderCompact = false;
+
     window.addEventListener("scroll", () => {
+      const y = window.scrollY;
+      if (!isHeaderCompact && y > 130) {
+        isHeaderCompact = true;
+        siteHeader.classList.add("is-compact");
+      } else if (isHeaderCompact && y < 10) {
+        isHeaderCompact = false;
+        siteHeader.classList.remove("is-compact");
+      }
+
       let current = "sec-top";
       sections.forEach(id => {
         const el = document.getElementById(id);
