@@ -475,13 +475,14 @@
     /* スッキリリスト */
     .souvenir-list { background: #fff; border: 1.5px solid var(--border-soft); border-radius: 12px; overflow: hidden; }
     .item-row {
-      display: flex; align-items: center; justify-content: space-between; gap: 0.7rem;
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
       padding: 0.72rem 0.95rem; border-bottom: 1px solid #F3ECE4; transition: background 0.1s;
     }
     .item-row:last-child { border-bottom: none; }
     .item-row:hover { background: #FCF9F5; }
-    .item-main { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; flex: 1; min-width: 0; }
-    .item-tags { display: flex; gap: 0.35rem; align-items: center; flex-shrink: 0; flex-wrap: wrap; }
+    .item-main { display: flex; flex-direction: column; align-items: flex-start; gap: 0.15rem; flex: 1; min-width: 0; }
+    .item-right { display: flex; align-items: center; justify-content: flex-end; gap: 0.55rem; flex-shrink: 0; }
+    .item-tags { display: flex; gap: 0.35rem; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
     .tag {
       font-size: 0.73rem; padding: 0.14rem 0.5rem; border-radius: 6px;
       border: 1px solid transparent; font-weight: bold; white-space: nowrap;
@@ -558,9 +559,9 @@
       .filters { grid-template-columns: 1fr; }
       .cat-chip { font-size: 0.76rem; padding: 0.32rem 0.68rem; }
 
-      .item-row { flex-direction: column; align-items: flex-start; gap: 0.45rem; padding: 0.7rem 0.8rem; }
+      .item-row { flex-direction: column; align-items: stretch; gap: 0.45rem; padding: 0.7rem 0.8rem; }
       .item-main { width: 100%; }
-      .time-link { align-self: flex-end; }
+      .item-right { width: 100%; justify-content: flex-end; flex-wrap: wrap; gap: 0.4rem; }
     }
   </style>
 </head>
@@ -1009,15 +1010,17 @@
         <div class="item-row">
           <div class="item-main">
             <span class="item-title">${esc(item.name)}</span>
+            ${item.memo ? `<span class="item-memo">${esc(item.memo)}</span>` : ""}
+          </div>
+          <div class="item-right">
             ${hasTags ? `
               <div class="item-tags">
                 ${showPref ? `<span class="tag pref">${item.epNo ? `第${item.epNo}回 ` : ""}${esc(item.pref)}</span>` : ""}
                 ${item.category ? `<span class="tag ${meta.cls}">${meta.icon} ${esc(item.category)}</span>` : ""}
               </div>
             ` : ""}
-            ${item.memo ? `<span class="item-memo">${esc(item.memo)}</span>` : ""}
+            ${item.url ? `<a class="time-link" href="${esc(item.url)}" target="_blank" rel="noopener">▶ ${item.timeLabel ? esc(item.timeLabel) + "〜" : "視聴"}</a>` : ""}
           </div>
-          ${item.url ? `<a class="time-link" href="${esc(item.url)}" target="_blank" rel="noopener">▶ ${item.timeLabel ? esc(item.timeLabel) + "〜" : "視聴"}</a>` : ""}
         </div>
       `;
     }
