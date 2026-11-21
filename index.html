@@ -1004,14 +1004,17 @@
 
     function createItemRow(item, showPref = true) {
       const meta = CAT_META[item.category] || { icon: "🍽️", cls: "" };
+      const hasTags = showPref || item.category;
       return `
         <div class="item-row">
           <div class="item-main">
-            <div class="item-tags">
-              ${showPref ? `<span class="tag pref">${item.epNo ? `第${item.epNo}回 ` : ""}${esc(item.pref)}</span>` : ""}
-              ${item.category ? `<span class="tag ${meta.cls}">${meta.icon} ${esc(item.category)}</span>` : ""}
-            </div>
             <span class="item-title">${esc(item.name)}</span>
+            ${hasTags ? `
+              <div class="item-tags">
+                ${showPref ? `<span class="tag pref">${item.epNo ? `第${item.epNo}回 ` : ""}${esc(item.pref)}</span>` : ""}
+                ${item.category ? `<span class="tag ${meta.cls}">${meta.icon} ${esc(item.category)}</span>` : ""}
+              </div>
+            ` : ""}
             ${item.memo ? `<span class="item-memo">${esc(item.memo)}</span>` : ""}
           </div>
           ${item.url ? `<a class="time-link" href="${esc(item.url)}" target="_blank" rel="noopener">▶ ${item.timeLabel ? esc(item.timeLabel) + "〜" : "視聴"}</a>` : ""}
