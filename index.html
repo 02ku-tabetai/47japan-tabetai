@@ -69,16 +69,16 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.45rem;
       flex-wrap: wrap;
     }
     .nav-link {
       display: inline-block;
       text-decoration: none;
       color: var(--choco-brown);
-      font-size: 0.85rem;
+      font-size: 0.84rem;
       font-weight: bold;
-      padding: 0.4rem 0.95rem;
+      padding: 0.4rem 0.9rem;
       border-radius: 999px;
       white-space: nowrap;
       transition: all 0.15s;
@@ -91,13 +91,34 @@
     }
 
     /* ==========================================
-       メインコンテナ・案内バナー・3ステップ図解
+       メインコンテナ・共通カード
        ========================================== */
     main { max-width: 1020px; margin: 0 auto; padding: 1.6rem 1rem 4rem; }
 
-    /* 「このサイトについて」カード（形は他と統一、色だけさりげなく区別） */
+    .card {
+      background: var(--card-bg);
+      border-radius: 18px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      border: 1.5px solid var(--border-soft);
+      box-shadow: 0 3px 12px rgba(90, 56, 38, 0.04);
+      scroll-margin-top: 70px;
+    }
+    h2 {
+      margin-top: 0;
+      font-size: 1.25rem;
+      border-left: 6px solid var(--done-orange);
+      padding-left: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    /* 「このサイトについて」カード */
     .intro-card { background: #FFFDF9; }
-    .intro-card h2 { border-left-color: var(--next-pink); } /* ← 他と完全統一したい時はこの1行を消す */
+    .intro-card h2 { border-left-color: var(--next-pink); }
     .intro-text {
       margin: 0;
       font-size: 0.94rem;
@@ -107,10 +128,9 @@
       line-height: 1.7;
     }
 
-    /* 最終更新＆最新収録回ステータス */
     .status-pill-row {
       display: flex;
-      justify-content: flex-start; 
+      justify-content: flex-start;
       gap: 0.5rem;
       flex-wrap: wrap;
       margin-top: 0.85rem;
@@ -133,7 +153,6 @@
       color: #C9530E;
     }
 
-    /* 3ステップ図解 */
     .steps-section {
       margin-top: 1.1rem;
       padding-top: 1rem;
@@ -183,27 +202,6 @@
       color: var(--done-orange);
       font-weight: bold;
       font-size: 1rem;
-    }
-
-    .card {
-      background: var(--card-bg);
-      border-radius: 18px;
-      padding: 1.5rem;
-      margin-bottom: 1.5rem;
-      border: 1.5px solid var(--border-soft);
-      box-shadow: 0 3px 12px rgba(90, 56, 38, 0.04);
-      scroll-margin-top: 70px;
-    }
-    h2 {
-      margin-top: 0;
-      font-size: 1.25rem;
-      border-left: 6px solid var(--done-orange);
-      padding-left: 0.75rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 0.4rem;
     }
 
     /* ==========================================
@@ -353,79 +351,41 @@
     .profile-btn:hover { transform: translateY(-2px); opacity: 0.94; }
 
     /* ==========================================
-       47都道府県 旅の記録（エリア別進捗・地図・開催順）
+       47都道府県 旅の記録
        ========================================== */
     .progress-wrap { margin-bottom: 0.75rem; }
     .progress-bar-bg { background: var(--unvisited); border-radius: 999px; height: 14px; overflow: hidden; }
     .progress-bar-fill { background: var(--done-orange); height: 100%; width: 0%; transition: width 0.5s ease; }
 
-    /* エリア別制覇率ミニバッジ */
-    .area-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-      margin-bottom: 1.15rem;
-    }
+    .area-grid { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.15rem; }
     .area-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      font-size: 0.76rem;
-      font-weight: bold;
-      padding: 0.25rem 0.65rem;
-      border-radius: 8px;
-      background: var(--unvisited);
-      color: var(--muted-text);
-      border: 1px solid #E2D7CC;
+      display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.76rem; font-weight: bold;
+      padding: 0.25rem 0.65rem; border-radius: 8px; background: var(--unvisited);
+      color: var(--muted-text); border: 1px solid #E2D7CC;
     }
-    .area-badge.has-progress {
-      background: #FFF6EE;
-      color: var(--choco-brown);
-      border-color: #FFD1AD;
-    }
+    .area-badge.has-progress { background: #FFF6EE; color: var(--choco-brown); border-color: #FFD1AD; }
     .area-badge.completed {
-      background: var(--done-orange);
-      color: #fff;
-      border-color: var(--done-orange);
+      background: var(--done-orange); color: #fff; border-color: var(--done-orange);
       box-shadow: 0 2px 6px rgba(255, 138, 61, 0.28);
     }
-    .area-count { opacity: 0.9; }
 
     .map-controls {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 0.7rem;
-      margin-bottom: 1.1rem;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 0.7rem; margin-bottom: 1.1rem;
     }
     .view-tabs { display: flex; gap: 0.55rem; flex-wrap: wrap; }
     .tab-btn {
-      padding: 0.5rem 1.1rem;
-      border-radius: 999px;
-      border: 1.5px solid #D9CEC2;
-      background: #fff;
-      color: var(--choco-brown);
-      font-weight: bold;
-      font-family: inherit;
-      cursor: pointer;
-      font-size: 0.88rem;
-      transition: all 0.15s;
+      padding: 0.5rem 1.1rem; border-radius: 999px; border: 1.5px solid #D9CEC2;
+      background: #fff; color: var(--choco-brown); font-weight: bold; font-family: inherit;
+      cursor: pointer; font-size: 0.88rem; transition: all 0.15s;
     }
     .tab-btn:hover { background: #FAF6F0; }
     .tab-btn.active { background: var(--choco-brown); border-color: var(--choco-brown); color: #fff; }
 
     .playlist-btn {
-      display: inline-block;
-      padding: 0.5rem 1.1rem;
-      border-radius: 999px;
-      text-decoration: none;
-      font-size: 0.85rem;
-      font-weight: bold;
-      color: #fff;
-      background: var(--next-pink);
-      box-shadow: 0 2px 6px rgba(255, 77, 141, 0.25);
-      transition: transform 0.15s, opacity 0.15s;
+      display: inline-block; padding: 0.5rem 1.1rem; border-radius: 999px; text-decoration: none;
+      font-size: 0.85rem; font-weight: bold; color: #fff; background: var(--next-pink);
+      box-shadow: 0 2px 6px rgba(255, 77, 141, 0.25); transition: transform 0.15s, opacity 0.15s;
     }
     .playlist-btn:hover { transform: translateY(-2px); opacity: 0.92; }
 
@@ -435,27 +395,13 @@
 
     .map-scroll { width: 100%; padding: 4px 2px 6px; }
     .japan-map {
-      display: grid;
-      grid-template-columns: repeat(14, minmax(0, 1fr));
-      grid-template-rows: repeat(11, 36px);
-      gap: 4px;
-      width: 100%;
+      display: grid; grid-template-columns: repeat(14, minmax(0, 1fr));
+      grid-template-rows: repeat(11, 36px); gap: 4px; width: 100%;
     }
     .pref-tile {
-      border: none;
-      border-radius: 7px;
-      font-size: 0.72rem;
-      font-weight: bold;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      transition: transform 0.12s, box-shadow 0.12s;
-      padding: 2px;
-      font-family: inherit;
-      line-height: 1.1;
-      min-width: 0;
+      border: none; border-radius: 7px; font-size: 0.72rem; font-weight: bold; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; text-align: center;
+      transition: transform 0.12s, box-shadow 0.12s; padding: 2px; font-family: inherit; line-height: 1.1; min-width: 0;
     }
     .pref-tile:hover { transform: translateY(-2px); box-shadow: 0 3px 6px rgba(90,56,38,0.16); }
     .pref-tile.selected {
@@ -467,62 +413,34 @@
     .status-next { background: var(--next-pink); color: #fff; }
     .status-none { background: var(--unvisited); color: var(--muted-text); }
 
-    .ep-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(min(180px, 100%), 1fr));
-      gap: 0.65rem;
-    }
+    .ep-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(180px, 100%), 1fr)); gap: 0.65rem; }
     .ep-card {
-      border: 1.5px solid var(--border-soft);
-      border-radius: 12px;
-      padding: 0.7rem 0.85rem;
-      background: #fff;
-      cursor: pointer;
-      text-align: left;
-      font-family: inherit;
-      color: var(--choco-brown);
+      border: 1.5px solid var(--border-soft); border-radius: 12px; padding: 0.7rem 0.85rem; background: #fff;
+      cursor: pointer; text-align: left; font-family: inherit; color: var(--choco-brown);
       transition: transform 0.12s, border-color 0.12s, background 0.12s, box-shadow 0.12s;
     }
     .ep-card:hover { transform: translateY(-2px); border-color: var(--done-orange); }
-    .ep-card.selected {
-      border: 2.5px solid var(--done-orange);
-      background: #FFF6EE;
-      box-shadow: 0 4px 12px rgba(255, 138, 61, 0.22);
-    }
-    .ep-card.is-next.selected {
-      border-color: var(--next-pink);
-      background: #FFF2F7;
-      box-shadow: 0 4px 12px rgba(255, 77, 141, 0.22);
-    }
+    .ep-card.selected { border: 2.5px solid var(--done-orange); background: #FFF6EE; box-shadow: 0 4px 12px rgba(255, 138, 61, 0.22); }
+    .ep-card.is-next.selected { border-color: var(--next-pink); background: #FFF2F7; box-shadow: 0 4px 12px rgba(255, 77, 141, 0.22); }
     .ep-no { font-size: 0.75rem; font-weight: bold; color: var(--done-orange); }
     .ep-card.is-next .ep-no { color: var(--next-pink); }
     .ep-pref { font-size: 1.02rem; font-weight: bold; margin: 0.1rem 0; }
     .ep-sub { font-size: 0.76rem; color: var(--muted-text); }
 
     .detail-box {
-      margin-top: 1.3rem;
-      padding: 1.3rem;
-      border-radius: 14px;
-      background: #FCF9F5;
-      border: 1.5px solid var(--border-soft);
-      display: none;
+      margin-top: 1.3rem; padding: 1.3rem; border-radius: 14px;
+      background: #FCF9F5; border: 1.5px solid var(--border-soft); display: none;
     }
     .detail-box.active { display: block; }
     .detail-header { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 1rem; }
     .detail-header h3 { margin: 0; font-size: 1.35rem; }
     .badge { display: inline-block; padding: 0.22rem 0.8rem; border-radius: 999px; font-size: 0.8rem; font-weight: bold; color: #fff; }
 
-    .episode-videos {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
-      gap: 1rem;
-      margin-bottom: 1.2rem;
-    }
+    .episode-videos { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap: 1rem; margin-bottom: 1.2rem; }
     .ep-video-card {
       display: block; background: #fff; border-radius: 14px; overflow: hidden;
       text-decoration: none; color: var(--choco-brown); border: 1.5px solid var(--border-soft);
-      box-shadow: 0 3px 10px rgba(90, 56, 38, 0.06); transition: transform 0.15s, box-shadow 0.15s;
-      min-width: 0;
+      box-shadow: 0 3px 10px rgba(90, 56, 38, 0.06); transition: transform 0.15s, box-shadow 0.15s; min-width: 0;
     }
     .ep-video-card:hover { transform: translateY(-3px); box-shadow: 0 6px 16px rgba(90, 56, 38, 0.12); }
     .ep-thumb-wrap { position: relative; width: 100%; aspect-ratio: 16 / 9; background: #222; }
@@ -540,7 +458,204 @@
     .ep-video-title { font-size: 0.98rem; font-weight: bold; word-break: break-word; }
 
     /* ==========================================
-       食べたもの検索・ジャンル集計グラフ・リスト
+       🎯 模擬ルーレット（2段階） セクション
+       ========================================== */
+    .tool-btn {
+      border: 1.5px solid #D9CEC2;
+      background: #fff;
+      color: var(--choco-brown);
+      font-family: inherit;
+      font-size: 0.78rem;
+      font-weight: bold;
+      padding: 0.3rem 0.75rem;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .tool-btn:hover { background: var(--unvisited); }
+    .tool-btn.active { background: var(--choco-brown); color: #fff; border-color: var(--choco-brown); }
+
+    .roulette-stepper {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.3rem;
+    }
+    .r-step-pill {
+      font-size: 0.78rem;
+      font-weight: bold;
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      background: var(--unvisited);
+      color: var(--muted-text);
+      border: 1.5px solid transparent;
+    }
+    .r-step-pill.active { background: #FFF4EB; color: #D45B12; border-color: var(--done-orange); }
+    .r-step-pill.done { background: var(--done-orange); color: #fff; }
+    .r-step-pill.active-pink { background: #FFF0F5; color: #D12C68; border-color: var(--next-pink); }
+
+    .roulette-layout {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2.2rem;
+      margin-top: 0.8rem;
+    }
+    .wheel-stage {
+      position: relative;
+      width: 100%;
+      max-width: 410px;
+      aspect-ratio: 1 / 1;
+      flex-shrink: 0;
+    }
+    .wheel-pointer {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 15px solid transparent;
+      border-right: 15px solid transparent;
+      border-top: 28px solid var(--next-pink);
+      filter: drop-shadow(0 3px 5px rgba(90, 56, 38, 0.35));
+      z-index: 5;
+    }
+    #rouletteCanvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+      filter: drop-shadow(0 6px 16px rgba(90, 56, 38, 0.15));
+    }
+    .wheel-center-cap {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: #FFFDF9;
+      border: 4px solid var(--choco-brown);
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      pointer-events: none;
+    }
+
+    .roulette-panel {
+      flex: 1;
+      min-width: 0;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+    .roulette-status-box {
+      background: #FAF6F0;
+      border: 1.5px solid var(--border-soft);
+      border-radius: 14px;
+      padding: 0.9rem 1.1rem;
+      font-size: 0.88rem;
+    }
+    .roulette-count { font-size: 1.02rem; font-weight: bold; margin-bottom: 0.25rem; }
+    .roulette-pool-preview { font-size: 0.8rem; color: var(--muted-text); line-height: 1.5; }
+    .roulette-option-row {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 0.82rem;
+      color: var(--muted-text);
+      margin-top: 0.55rem;
+      cursor: pointer;
+    }
+    .roulette-option-row input { width: auto; padding: 0; margin: 0; }
+
+    .spin-btn {
+      width: 100%;
+      padding: 0.95rem 1.4rem;
+      border-radius: 999px;
+      border: none;
+      background: linear-gradient(135deg, var(--done-orange), var(--next-pink));
+      color: #fff;
+      font-family: inherit;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 5px 16px rgba(255, 77, 141, 0.35);
+      transition: transform 0.15s, opacity 0.15s;
+    }
+    .spin-btn:hover:not(:disabled) { transform: translateY(-2px); }
+    .spin-btn:active:not(:disabled) { transform: scale(0.98); }
+    .spin-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    .roulette-result {
+      display: none;
+      background: #FFF9F2;
+      border: 2.5px solid var(--done-orange);
+      border-radius: 16px;
+      padding: 1.05rem;
+      text-align: center;
+      box-shadow: 0 5px 16px rgba(255, 138, 61, 0.2);
+      animation: popIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .roulette-result.show { display: block; }
+    .roulette-result.final { border-color: var(--next-pink); background: #FFF5F8; }
+    @keyframes popIn {
+      0% { transform: scale(0.85); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    .result-sub { font-size: 0.84rem; font-weight: bold; color: var(--next-pink); }
+    .result-pref { font-size: 2rem; font-weight: bold; color: var(--choco-brown); margin: 0.2rem 0 0.45rem; }
+    .result-hint { font-size: 0.8rem; color: var(--muted-text); margin-bottom: 0.7rem; }
+    .result-actions { display: flex; gap: 0.45rem; justify-content: center; flex-wrap: wrap; }
+    .result-sub-btn {
+      border: 1.5px solid var(--border-soft);
+      background: #fff;
+      color: var(--choco-brown);
+      font-family: inherit;
+      font-size: 0.78rem;
+      font-weight: bold;
+      padding: 0.38rem 0.85rem;
+      border-radius: 999px;
+      cursor: pointer;
+    }
+    .result-sub-btn:hover { background: var(--unvisited); }
+
+    details.target-editor {
+      background: #fff;
+      border: 1px solid var(--border-soft);
+      border-radius: 12px;
+      padding: 0.65rem 0.9rem;
+      font-size: 0.82rem;
+    }
+    details.target-editor summary { cursor: pointer; font-weight: bold; color: var(--muted-text); }
+    .target-checks {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(84px, 1fr));
+      gap: 0.35rem;
+      margin-top: 0.7rem;
+      max-height: 180px;
+      overflow-y: auto;
+    }
+    .target-check-item { display: flex; align-items: center; gap: 0.25rem; font-size: 0.78rem; cursor: pointer; }
+    .target-check-item input { width: auto; padding: 0; }
+
+    .confetti-layer { position: fixed; inset: 0; pointer-events: none; z-index: 1200; overflow: hidden; }
+    .confetti-piece {
+      position: absolute; width: 10px; height: 10px; top: -15px; border-radius: 2px;
+      animation: confettiFall 2.4s linear forwards;
+    }
+    @keyframes confettiFall {
+      0%   { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(105vh) rotate(540deg); opacity: 0; }
+    }
+
+    /* ==========================================
+       食べたもの検索・集計グラフ・リスト
        ========================================== */
     .filters { display: grid; grid-template-columns: 2fr 1fr; gap: 0.65rem; margin-bottom: 1rem; }
     input, select {
@@ -549,103 +664,42 @@
     }
     input:focus, select:focus { outline: none; border-color: var(--choco-brown); }
 
-    /* タグ別集計グラフパネル */
     .stats-panel {
-      background: #FCF9F5;
-      border: 1.5px solid var(--border-soft);
-      border-radius: 14px;
-      padding: 0.95rem 1.05rem;
-      margin-bottom: 1.1rem;
+      background: #FCF9F5; border: 1.5px solid var(--border-soft); border-radius: 14px;
+      padding: 0.95rem 1.05rem; margin-bottom: 1.1rem;
     }
-    .stats-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-      margin-bottom: 0.6rem;
-    }
+    .stats-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.6rem; }
     .stats-title { font-size: 0.82rem; font-weight: bold; color: var(--muted-text); }
     .reset-cat-btn {
-      border: 1px solid #D9CEC2;
-      background: #fff;
-      color: var(--choco-brown);
-      font-size: 0.75rem;
-      font-weight: bold;
-      padding: 0.2rem 0.65rem;
-      border-radius: 999px;
-      cursor: pointer;
-      font-family: inherit;
+      border: 1px solid #D9CEC2; background: #fff; color: var(--choco-brown); font-size: 0.75rem;
+      font-weight: bold; padding: 0.2rem 0.65rem; border-radius: 999px; cursor: pointer; font-family: inherit;
     }
     .reset-cat-btn.active { background: var(--choco-brown); color: #fff; border-color: var(--choco-brown); }
 
-    /* 100% 積み上げ横棒グラフ */
-    .stack-bar {
-      display: flex;
-      height: 12px;
-      border-radius: 999px;
-      overflow: hidden;
-      background: var(--unvisited);
-      margin-bottom: 0.75rem;
-      gap: 1.5px;
-    }
-    .stack-seg {
-      height: 100%;
-      cursor: pointer;
-      transition: opacity 0.15s;
-    }
+    .stack-bar { display: flex; height: 12px; border-radius: 999px; overflow: hidden; background: var(--unvisited); margin-bottom: 0.75rem; gap: 1.5px; }
+    .stack-seg { height: 100%; cursor: pointer; transition: opacity 0.15s; }
     .stack-seg:hover { opacity: 0.8; }
 
-    /* 各カテゴリのミニ横棒カード（絞り込みボタン兼用） */
-    .cat-stats-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0.45rem;
-    }
+    .cat-stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.45rem; }
     .cat-stat-card {
-      background: #fff;
-      border: 1.5px solid #EAE0D5;
-      border-radius: 10px;
-      padding: 0.45rem 0.65rem;
-      cursor: pointer;
-      text-align: left;
-      font-family: inherit;
-      color: var(--choco-brown);
+      background: #fff; border: 1.5px solid #EAE0D5; border-radius: 10px; padding: 0.45rem 0.65rem;
+      cursor: pointer; text-align: left; font-family: inherit; color: var(--choco-brown);
       transition: transform 0.12s, border-color 0.12s, box-shadow 0.12s;
     }
     .cat-stat-card:hover { transform: translateY(-1px); border-color: var(--done-orange); }
-    .cat-stat-card.active {
-      border-width: 2px;
-      box-shadow: 0 3px 8px rgba(90, 56, 38, 0.14);
-    }
-    .cat-stat-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 0.3rem;
-      font-size: 0.77rem;
-      font-weight: bold;
-      margin-bottom: 0.3rem;
-    }
+    .cat-stat-card.active { border-width: 2px; box-shadow: 0 3px 8px rgba(90, 56, 38, 0.14); }
+    .cat-stat-top { display: flex; justify-content: space-between; align-items: center; gap: 0.3rem; font-size: 0.77rem; font-weight: bold; margin-bottom: 0.3rem; }
     .cat-stat-name { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .cat-stat-num { color: var(--muted-text); font-size: 0.72rem; flex-shrink: 0; }
-    .cat-mini-bar-bg {
-      height: 6px;
-      border-radius: 999px;
-      background: #F3ECE4;
-      overflow: hidden;
-    }
-    .cat-mini-bar-fill {
-      height: 100%;
-      border-radius: 999px;
-    }
+    .cat-mini-bar-bg { height: 6px; border-radius: 999px; background: #F3ECE4; overflow: hidden; }
+    .cat-mini-bar-fill { height: 100%; border-radius: 999px; }
 
-    /* リスト内タグ色 */
+    /* カテゴリタグ配色 */
     .tag.cat-sweets    { background: #FFF0F5; color: #C2275E; border-color: #FFBBD2; }
     .tag.cat-drink     { background: #EBF7FF; color: #1971A8; border-color: #A8D8F8; }
-    .tag.cat-snack     { background: #FFF6DC; color: #9E6200; border-color: #F2D27A; }
     .tag.cat-side      { background: #FFF0E5; color: #B84C14; border-color: #F7C29E; }
     .tag.cat-meal      { background: #EDF8EA; color: #2E6F29; border-color: #B4DBA8; }
+    .tag.cat-soup      { background: #FFF6DC; color: #9E6200; border-color: #F2D27A; }
     .tag.cat-seasoning { background: #F4ECE4; color: #5A3826; border-color: #D4BFA9; }
 
     .souvenir-list { background: #fff; border: 1.5px solid var(--border-soft); border-radius: 12px; overflow: hidden; }
@@ -677,6 +731,11 @@
     /* ==========================================
        スマホ・タブレット最適化レスポンシブ
        ========================================== */
+    @media (max-width: 820px) {
+      .roulette-layout { flex-direction: column; gap: 1.3rem; }
+      .wheel-stage { max-width: 340px; }
+    }
+
     @media (max-width: 780px) {
       .profile-wrap { flex-direction: column; gap: 1rem; }
       .profile-illust-box { width: 100%; }
@@ -690,16 +749,15 @@
 
     @media (max-width: 640px) {
       header { padding: 1.25rem 0.8rem; }
-      .sticky-nav { padding: 0.45rem 0.4rem; }
-      .sticky-nav-inner { gap: 0.25rem; }
-      .nav-link { font-size: 0.74rem; padding: 0.35rem 0.6rem; }
+      .sticky-nav { padding: 0.42rem 0.3rem; }
+      .sticky-nav-inner { gap: 0.2rem; }
+      .nav-link { font-size: 0.7rem; padding: 0.32rem 0.48rem; }
 
       main { padding: 1rem 0.6rem 3rem; }
-
       .status-pill { font-size: 0.7rem; padding: 0.2rem 0.6rem; }
 
       .card { padding: 1rem 0.85rem; margin-bottom: 1rem; border-radius: 14px; scroll-margin-top: 56px; }
-      h2 { font-size: 1.1rem; flex-direction: column; align-items: flex-start; gap: 0.2rem; }
+      h2 { font-size: 1.1rem; flex-direction: column; align-items: flex-start; gap: 0.3rem; }
       .profile-name { font-size: 1.55rem; }
       .profile-actions { flex-direction: column; }
       .profile-btn { width: 100%; }
@@ -715,11 +773,8 @@
       .map-scroll { padding: 2px 0 4px; }
       .japan-map { grid-template-rows: repeat(11, 28px); gap: 2px; }
       .pref-tile {
-        font-size: 8.5px;
-        border-radius: 4px;
-        padding: 1px;
-        line-height: 1.05;
-        word-break: break-all;
+        font-size: 8.5px; border-radius: 4px; padding: 1px;
+        line-height: 1.05; word-break: break-all;
       }
 
       .ep-grid { grid-template-columns: repeat(2, 1fr); gap: 0.45rem; }
@@ -729,6 +784,10 @@
       .detail-box { padding: 0.9rem 0.75rem; margin-top: 1rem; }
       .detail-header h3 { font-size: 1.2rem; }
       .episode-videos { grid-template-columns: 1fr; gap: 0.85rem; }
+
+      .wheel-stage { max-width: 300px; }
+      .wheel-center-cap { width: 46px; height: 46px; font-size: 1.15rem; }
+      .result-pref { font-size: 1.7rem; }
 
       .filters { grid-template-columns: 1fr; }
       .stats-panel { padding: 0.75rem; }
@@ -754,6 +813,7 @@
       <a class="nav-link active" href="#sec-top">🔝 トップ</a>
       <a class="nav-link" href="#sec-profile">✨ PROFILE</a>
       <a class="nav-link" href="#sec-map">📍 旅の記録</a>
+      <a class="nav-link" href="#sec-roulette">🎯 ルーレット</a>
       <a class="nav-link" href="#sec-search">🍽️ 検索</a>
     </div>
   </nav>
@@ -778,7 +838,7 @@
           <div class="step-box s2">
             <span class="step-num">STEP 2</span>
             <div class="step-title">🛒「見つけよう」でお土産選び</div>
-            <div class="step-desc">お土産ランキングを見ながら、竹辺莉央が厳選＆実際に購入！</div>
+            <div class="step-desc">お土産ランキングを見ながら、本人が約10品を厳選＆実際に購入！</div>
           </div>
           <div class="step-arrow">▶</div>
           <div class="step-box s3">
@@ -788,7 +848,7 @@
           </div>
         </div>
       </div>
-    </section> 
+    </section>
 
     <!-- PROFILE -->
     <section id="sec-profile" class="card profile-card">
@@ -829,7 +889,6 @@
         <div class="progress-bar-bg"><div id="progressBar" class="progress-bar-fill"></div></div>
       </div>
 
-      <!-- エリア別制覇率ミニバッジ -->
       <div id="areaProgress" class="area-grid"></div>
 
       <div class="map-controls">
@@ -859,6 +918,56 @@
       <div id="prefDetail" class="detail-box"></div>
     </section>
 
+    <!-- 2段階模擬ルーレット -->
+    <section id="sec-roulette" class="card roulette-card">
+      <h2>
+        <span>🎯 次はどこになる？ルーレットシミュレーション</span>
+        <button id="soundToggleBtn" class="tool-btn active" onclick="toggleSound()">🔊 効果音 ON</button>
+      </h2>
+
+      <div class="roulette-layout">
+        <div class="wheel-stage">
+          <div class="wheel-pointer"></div>
+          <canvas id="rouletteCanvas" width="560" height="560"></canvas>
+          <div class="wheel-center-cap">🍴</div>
+        </div>
+
+        <div class="roulette-panel">
+          <div id="rouletteStepper" class="roulette-stepper"></div>
+
+          <div class="roulette-status-box">
+            <div id="rouletteCountText" class="roulette-count">対象：--</div>
+            <div id="roulettePoolPreview" class="roulette-pool-preview"></div>
+            <div style="font-size:0.76rem; color:var(--muted-text); margin-top:0.35rem;">
+              ※まだ食べていない県から「次はどこになるかな？」と予想して遊べる非公式の模擬ルーレットです。
+            </div>
+            <label class="roulette-option-row">
+              <input type="checkbox" id="includeNextCheck" onchange="resetRouletteTargets()" />
+              <span>次回予定（選定済みの県）も候補に含める</span>
+            </label>
+          </div>
+
+          <button id="spinBtn" class="spin-btn" onclick="spinRoulette()">🎯 ステップ1：地方ルーレットを回す！</button>
+
+          <div id="rouletteResult" class="roulette-result">
+            <div id="resultSub" class="result-sub"></div>
+            <div id="resultPrefName" class="result-pref">--</div>
+            <div id="resultHint" class="result-hint"></div>
+            <div id="resultActions" class="result-actions"></div>
+          </div>
+
+          <details class="target-editor">
+            <summary>⚙️ 対象の県を個別に調整する</summary>
+            <div style="margin-top:0.5rem; display:flex; gap:0.4rem;">
+              <button type="button" class="tool-btn" onclick="resetRouletteTargets()">未制覇のみに戻す</button>
+              <button type="button" class="tool-btn" onclick="selectAllTargets(true)">全47県にする</button>
+            </div>
+            <div id="targetChecks" class="target-checks"></div>
+          </details>
+        </div>
+      </div>
+    </section>
+
     <!-- 食べたもの検索 -->
     <section id="sec-search" class="card">
       <h2>
@@ -871,7 +980,6 @@
         <select id="prefSelect"><option value="">すべての都道府県（開催順）</option></select>
       </div>
 
-      <!-- ジャンル別集計グラフ＆絞り込み -->
       <div id="statsPanel" class="stats-panel" style="display:none;">
         <div class="stats-header">
           <span class="stats-title">📊 ジャンル別の内訳（タップで絞り込みできます）</span>
@@ -887,6 +995,7 @@
     </section>
   </main>
 
+  <div id="confettiLayer" class="confetti-layer"></div>
   <footer id="siteFooter"></footer>
 
   <script src="data.js"></script>
@@ -931,13 +1040,26 @@
     ];
 
     const CAT_META = {
-      "スイーツ":          { icon: "🍰", cls: "cat-sweets",    color: "#E84A7F", bg: "#FFF0F5" },
-      "飲み物":            { icon: "🥤", cls: "cat-drink",     color: "#2993D4", bg: "#EBF7FF" },
-      "スナック・塩菓子":  { icon: "🍘", cls: "cat-snack",     color: "#D9920B", bg: "#FFF6DC" },
-      "おつまみ・惣菜":    { icon: "🍢", cls: "cat-side",      color: "#E06824", bg: "#FFF0E5" },
-      "麺・ご飯・スープ":  { icon: "🍜", cls: "cat-meal",      color: "#4C9445", bg: "#EDF8EA" },
-      "調味料・ご飯のお供":{ icon: "🧂", cls: "cat-seasoning", color: "#7D523A", bg: "#F4ECE4" }
+      "スイーツ・スナック": { icon: "🍰", cls: "cat-sweets",    color: "#E84A7F", bg: "#FFF0F5" },
+      "飲み物":             { icon: "🥤", cls: "cat-drink",     color: "#2993D4", bg: "#EBF7FF" },
+      "おつまみ・惣菜":     { icon: "🍢", cls: "cat-side",      color: "#E06824", bg: "#FFF0E5" },
+      "麺・ごはん":         { icon: "🍜", cls: "cat-meal",      color: "#4C9445", bg: "#EDF8EA" },
+      "スープ":             { icon: "🥣", cls: "cat-soup",      color: "#D9920B", bg: "#FFF6DC" },
+      "調味料・ご飯のお供": { icon: "🧂", cls: "cat-seasoning", color: "#7D523A", bg: "#F4ECE4" }
     };
+
+    // 旧タグ名がスプレッドシートに残っていても新タグに自動変換
+    function normalizeCategory(rawCat, itemName) {
+      const c = (rawCat || "").trim();
+      if (c === "スイーツ" || c === "スナック・塩菓子" || c === "スナック") {
+        return "スイーツ・スナック";
+      }
+      if (c === "麺・ご飯・スープ") {
+        if (/(スープ|汁|いちご煮)/.test(itemName)) return "スープ";
+        return "麺・ごはん";
+      }
+      return c;
+    }
 
     function esc(str) {
       return String(str || "").replace(/[&<>"']/g, m => ({
@@ -1133,7 +1255,7 @@
       }
     }
 
-    const sections = ["sec-top", "sec-profile", "sec-map", "sec-search"];
+    const sections = ["sec-top", "sec-profile", "sec-map", "sec-roulette", "sec-search"];
     window.addEventListener("scroll", () => {
       let current = "sec-top";
       sections.forEach(id => {
@@ -1251,14 +1373,12 @@
       `;
     }
 
-    // カテゴリ絞り込み（同じカテゴリをもう1回押すと解除）
     function setCat(cat) {
       selectedCat = (selectedCat === cat && cat !== "") ? "" : cat;
       renderStats();
       renderAll();
     }
 
-    // ジャンル別集計グラフ＆絞り込みボタン描画
     function renderStats() {
       const panel = document.getElementById("statsPanel");
       const total = items.length;
@@ -1267,12 +1387,10 @@
         return;
       }
       panel.style.display = "block";
-
       document.getElementById("resetCatBtn").classList.toggle("active", selectedCat === "");
 
       const stackEl = document.getElementById("stackBar");
       const gridEl = document.getElementById("catStatsGrid");
-
       let stackHtml = "";
       let cardsHtml = "";
 
@@ -1284,7 +1402,6 @@
         const isActive = selectedCat === c;
 
         stackHtml += `<div class="stack-seg" style="width:${exactPct}%; background:${meta.color};" title="${esc(c)}: ${count}品 (${pct}%)" onclick="setCat('${esc(c)}')"></div>`;
-
         cardsHtml += `
           <button class="cat-stat-card ${isActive ? "active" : ""}"
                   style="${isActive ? `border-color:${meta.color}; background:${meta.bg};` : ""}"
@@ -1304,7 +1421,6 @@
       gridEl.innerHTML = cardsHtml;
     }
 
-    // エリア（地方）別制覇率ミニバッジ描画
     function renderAreaProgress() {
       const areaEl = document.getElementById("areaProgress");
       areaEl.innerHTML = AREA_DEFS.map(area => {
@@ -1321,7 +1437,6 @@
       }).join("");
     }
 
-    // 最終更新日＆最新収録回ステータス描画
     function renderStatusPills() {
       const pillEl = document.getElementById("statusPills");
       let latestDone = null;
@@ -1348,6 +1463,431 @@
         html += `<span class="status-pill highlight">📺 最新：${esc(epText)}まで反映済み</span>`;
       }
       pillEl.innerHTML = html;
+    }
+
+    /* ==========================================
+       🎯 模擬ルーレット（2段階） ロジック
+       ========================================== */
+    const WHEEL_PALETTE = [
+      { bg: "#FF8A3D", text: "#FFFFFF" },
+      { bg: "#FFF2E2", text: "#5A3826" },
+      { bg: "#FF4D8D", text: "#FFFFFF" },
+      { bg: "#FFE6EF", text: "#5A3826" },
+      { bg: "#FFC107", text: "#5A3826" },
+      { bg: "#EFEAE4", text: "#5A3826" }
+    ];
+
+    let targetPrefs = [];
+    let excludedAreas = new Set();
+    let rouletteStep = 1;
+    let selectedArea = "";
+    let activePool = [];
+    let currentAngle = -Math.PI / 2;
+    let isSpinning = false;
+    let soundEnabled = true;
+    let audioCtx = null;
+    let lastWinner = "";
+
+    function ensureAudio() {
+      if (!soundEnabled) return null;
+      if (!audioCtx) {
+        const Ctx = window.AudioContext || window.webkitAudioContext;
+        if (Ctx) audioCtx = new Ctx();
+      }
+      if (audioCtx && audioCtx.state === "suspended") audioCtx.resume();
+      return audioCtx;
+    }
+
+    function playTickSound() {
+      if (!soundEnabled || !audioCtx) return;
+      try {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = "triangle";
+        osc.frequency.setValueAtTime(760, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(320, audioCtx.currentTime + 0.035);
+        gain.gain.setValueAtTime(0.11, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.04);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.045);
+      } catch {}
+    }
+
+    function playStepChime() {
+      if (!soundEnabled || !audioCtx) return;
+      try {
+        [523.25, 659.25, 783.99].forEach((freq, idx) => {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          const start = audioCtx.currentTime + idx * 0.08;
+          osc.type = "sine";
+          osc.frequency.setValueAtTime(freq, start);
+          gain.gain.setValueAtTime(0.13, start);
+          gain.gain.exponentialRampToValueAtTime(0.001, start + 0.22);
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.start(start);
+          osc.stop(start + 0.24);
+        });
+      } catch {}
+    }
+
+    function playFanfare() {
+      if (!soundEnabled || !audioCtx) return;
+      try {
+        const notes = [523.25, 659.25, 783.99, 1046.5];
+        notes.forEach((freq, idx) => {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          const start = audioCtx.currentTime + idx * 0.09;
+          const dur = idx === notes.length - 1 ? 0.55 : 0.14;
+          osc.type = "sine";
+          osc.frequency.setValueAtTime(freq, start);
+          gain.gain.setValueAtTime(0.14, start);
+          gain.gain.exponentialRampToValueAtTime(0.001, start + dur);
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.start(start);
+          osc.stop(start + dur + 0.02);
+        });
+      } catch {}
+    }
+
+    function toggleSound() {
+      soundEnabled = !soundEnabled;
+      const btn = document.getElementById("soundToggleBtn");
+      btn.textContent = soundEnabled ? "🔊 効果音 ON" : "🔇 効果音 OFF";
+      btn.classList.toggle("active", soundEnabled);
+    }
+
+    function launchConfetti() {
+      const layer = document.getElementById("confettiLayer");
+      const colors = ["#FF8A3D", "#FF4D8D", "#FFC107", "#6AB7F0", "#6EB33F"];
+      for (let i = 0; i < 45; i++) {
+        const el = document.createElement("div");
+        el.className = "confetti-piece";
+        el.style.left = `${Math.random() * 100}%`;
+        el.style.background = colors[i % colors.length];
+        el.style.animationDelay = `${Math.random() * 0.35}s`;
+        el.style.width = `${7 + Math.random() * 6}px`;
+        el.style.height = `${7 + Math.random() * 6}px`;
+        layer.appendChild(el);
+        setTimeout(() => el.remove(), 2900);
+      }
+    }
+
+    function getUnvisitedList() {
+      const includeNext = document.getElementById("includeNextCheck").checked;
+      return PREFS.map(p => p.name).filter(name => {
+        const isDone = prefMap[name] && prefMap[name].length > 0;
+        if (isDone) return false;
+        const ep = epByPref[name];
+        const isNext = ep && ep.status === "next";
+        if (!includeNext && isNext) return false;
+        return true;
+      });
+    }
+
+    function getAvailableAreas() {
+      const targetSet = new Set(targetPrefs);
+      return AREA_DEFS.filter(area =>
+        !excludedAreas.has(area.name) && area.prefs.some(p => targetSet.has(p))
+      ).map(area => area.name);
+    }
+
+    function getPrefsInArea(areaName) {
+      const area = AREA_DEFS.find(a => a.name === areaName);
+      if (!area) return [];
+      const targetSet = new Set(targetPrefs);
+      return area.prefs.filter(p => targetSet.has(p));
+    }
+
+    function resetRouletteTargets() {
+      if (isSpinning) return;
+      targetPrefs = getUnvisitedList();
+      excludedAreas = new Set();
+      backToAreaRoulette();
+      renderTargetChecks();
+    }
+
+    function selectAllTargets(allFlag) {
+      if (isSpinning) return;
+      targetPrefs = allFlag ? PREFS.map(p => p.name) : [];
+      excludedAreas = new Set();
+      backToAreaRoulette();
+      renderTargetChecks();
+    }
+
+    function renderTargetChecks() {
+      const set = new Set(targetPrefs);
+      const wrap = document.getElementById("targetChecks");
+      wrap.innerHTML = PREFS.map(p => `
+        <label class="target-check-item">
+          <input type="checkbox" value="${esc(p.name)}" ${set.has(p.name) ? "checked" : ""} onchange="onTargetCheckChange()" />
+          <span>${esc(p.name)}</span>
+        </label>
+      `).join("");
+    }
+
+    function onTargetCheckChange() {
+      if (isSpinning) return;
+      targetPrefs = [...document.querySelectorAll("#targetChecks input:checked")].map(el => el.value);
+      backToAreaRoulette();
+    }
+
+    function backToAreaRoulette() {
+      if (isSpinning) return;
+      rouletteStep = 1;
+      selectedArea = "";
+      lastWinner = "";
+      activePool = getAvailableAreas();
+      document.getElementById("rouletteResult").classList.remove("show", "final");
+      updateRouletteUI();
+      drawWheel();
+    }
+
+    function updateRouletteUI() {
+      const stepperEl = document.getElementById("rouletteStepper");
+      const countEl = document.getElementById("rouletteCountText");
+      const previewEl = document.getElementById("roulettePoolPreview");
+      const btn = document.getElementById("spinBtn");
+
+      if (rouletteStep === 1 && !selectedArea) {
+        stepperEl.innerHTML = `
+          <span class="r-step-pill active">① 地方を選ぶ</span>
+          <span style="color:var(--muted-text); font-size:0.8rem;">▶</span>
+          <span class="r-step-pill">② 県を選ぶ</span>
+        `;
+        countEl.textContent = `STEP 1｜対象：残り ${activePool.length} 地方（計 ${targetPrefs.length} 県）`;
+        previewEl.textContent = activePool.length > 0
+          ? activePool.map(a => `${a} (${getPrefsInArea(a).length})`).join(" / ")
+          : "対象の地方がありません";
+        btn.textContent = "🎯 ステップ1：地方ルーレットを回す！";
+        btn.disabled = (activePool.length === 0 || isSpinning);
+      } else if (rouletteStep === 1 && selectedArea) {
+        const areaPrefs = getPrefsInArea(selectedArea);
+        stepperEl.innerHTML = `
+          <span class="r-step-pill done">✓ ① 地方：${esc(selectedArea)}</span>
+          <span style="color:var(--muted-text); font-size:0.8rem;">▶</span>
+          <span class="r-step-pill active-pink">② 県を選ぶ</span>
+        `;
+        countEl.textContent = `STEP 2 準備完了｜【${selectedArea}】の残り ${areaPrefs.length} 県`;
+        previewEl.textContent = `候補：${areaPrefs.join("・")}`;
+        btn.textContent = `🎯 ステップ2：【${selectedArea}】の県ルーレットを回す！`;
+        btn.disabled = (areaPrefs.length === 0 || isSpinning);
+      } else {
+        stepperEl.innerHTML = `
+          <span class="r-step-pill done">✓ ① 地方：${esc(selectedArea)}</span>
+          <span style="color:var(--muted-text); font-size:0.8rem;">▶</span>
+          <span class="r-step-pill active-pink">② 県を選ぶ</span>
+        `;
+        countEl.textContent = `STEP 2｜【${selectedArea}】の対象：${activePool.length} 県`;
+        previewEl.textContent = activePool.length > 0 ? `候補：${activePool.join("・")}` : "この地方の対象県がなくなりました";
+        btn.textContent = `🔄 【${selectedArea}】でもう一度回す`;
+        btn.disabled = (activePool.length === 0 || isSpinning);
+      }
+    }
+
+    function getPointerIndex(angle, count) {
+      if (count <= 0) return -1;
+      const slice = (Math.PI * 2) / count;
+      let rel = (-Math.PI / 2 - angle) % (Math.PI * 2);
+      if (rel < 0) rel += Math.PI * 2;
+      return Math.floor(rel / slice) % count;
+    }
+
+    function drawWheel() {
+      const canvas = document.getElementById("rouletteCanvas");
+      const ctx = canvas.getContext("2d");
+      const cx = canvas.width / 2;
+      const cy = canvas.height / 2;
+      const radius = cx - 14;
+
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      const n = activePool.length;
+      if (n === 0) {
+        ctx.beginPath();
+        ctx.arc(cx, cy, radius, 0, Math.PI * 2);
+        ctx.fillStyle = "#EFEAE4";
+        ctx.fill();
+        ctx.fillStyle = "#856E60";
+        ctx.font = "bold 24px sans-serif";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.fillText("対象がありません", cx, cy);
+        return;
+      }
+
+      if (n === 1) {
+        ctx.beginPath();
+        ctx.arc(cx, cy, radius, 0, Math.PI * 2);
+        ctx.fillStyle = WHEEL_PALETTE[0].bg;
+        ctx.fill();
+        ctx.lineWidth = 7;
+        ctx.strokeStyle = "#5A3826";
+        ctx.stroke();
+
+        ctx.save();
+        ctx.translate(cx, cy);
+        ctx.rotate(currentAngle + Math.PI / 2);
+        ctx.fillStyle = "#FFFFFF";
+        ctx.font = `bold 34px "Hiragino Maru Gothic ProN", "Meiryo", sans-serif`;
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.fillText(activePool[0], 0, -radius * 0.48);
+        ctx.restore();
+        return;
+      }
+
+      const slice = (Math.PI * 2) / n;
+      const fontSize = n <= 6 ? 24 : (n <= 10 ? 22 : (n <= 20 ? 18 : 15));
+
+      for (let i = 0; i < n; i++) {
+        const start = currentAngle + i * slice;
+        const end = start + slice;
+        const pal = WHEEL_PALETTE[i % WHEEL_PALETTE.length];
+
+        ctx.beginPath();
+        ctx.moveTo(cx, cy);
+        ctx.arc(cx, cy, radius, start, end);
+        ctx.closePath();
+        ctx.fillStyle = pal.bg;
+        ctx.fill();
+        ctx.lineWidth = 2.5;
+        ctx.strokeStyle = "#FFFFFF";
+        ctx.stroke();
+
+        ctx.save();
+        ctx.translate(cx, cy);
+        ctx.rotate(start + slice / 2);
+        ctx.fillStyle = pal.text;
+        ctx.font = `bold ${fontSize}px "Hiragino Maru Gothic ProN", "Meiryo", sans-serif`;
+        ctx.textAlign = "right";
+        ctx.textBaseline = "middle";
+        ctx.fillText(activePool[i], radius - 22, 0);
+        ctx.restore();
+      }
+
+      ctx.beginPath();
+      ctx.arc(cx, cy, radius, 0, Math.PI * 2);
+      ctx.lineWidth = 7;
+      ctx.strokeStyle = "#5A3826";
+      ctx.stroke();
+    }
+
+    function spinRoulette() {
+      if (isSpinning) return;
+
+      if (rouletteStep === 1 && selectedArea) {
+        rouletteStep = 2;
+        activePool = getPrefsInArea(selectedArea);
+        currentAngle = -Math.PI / 2;
+      }
+
+      if (activePool.length === 0) return;
+      ensureAudio();
+
+      isSpinning = true;
+      updateRouletteUI();
+      document.getElementById("rouletteResult").classList.remove("show", "final");
+
+      const n = activePool.length;
+      const startAngle = currentAngle;
+      const extraSpins = (6 + Math.floor(Math.random() * 4)) * Math.PI * 2;
+      const randomOffset = Math.random() * Math.PI * 2;
+      const totalDelta = extraSpins + randomOffset;
+      const duration = rouletteStep === 1 ? 3800 : 4600;
+      const startTime = performance.now();
+      let prevIdx = getPointerIndex(currentAngle, n);
+
+      function step(now) {
+        const elapsed = now - startTime;
+        const t = Math.min(elapsed / duration, 1);
+        const ease = 1 - Math.pow(1 - t, 4);
+        currentAngle = startAngle + totalDelta * ease;
+        drawWheel();
+
+        const currIdx = getPointerIndex(currentAngle, n);
+        if (currIdx !== prevIdx) {
+          playTickSound();
+          prevIdx = currIdx;
+        }
+
+        if (t < 1) {
+          requestAnimationFrame(step);
+        } else {
+          isSpinning = false;
+          const winIdx = getPointerIndex(currentAngle, n);
+          const winner = activePool[winIdx];
+          showStepResult(winner);
+        }
+      }
+
+      requestAnimationFrame(step);
+    }
+
+    function showStepResult(winner) {
+      const resBox = document.getElementById("rouletteResult");
+      const subEl = document.getElementById("resultSub");
+      const nameEl = document.getElementById("resultPrefName");
+      const hintEl = document.getElementById("resultHint");
+      const actEl = document.getElementById("resultActions");
+
+      if (rouletteStep === 1) {
+        selectedArea = winner;
+        const areaPrefs = getPrefsInArea(selectedArea);
+        subEl.textContent = "🎯 ステップ1 予想地方が決定！";
+        nameEl.textContent = `【 ${selectedArea} 】`;
+        hintEl.textContent = `この地方の残り ${areaPrefs.length} 県（${areaPrefs.join("・")}）から抽選します！上のボタンを押してください👇`;
+        actEl.innerHTML = `
+          <button class="result-sub-btn" onclick="respinArea()">🔄 地方をもう一度回す</button>
+          <button class="result-sub-btn" onclick="excludeLastArea()">🚫 この地方を外して引き直す</button>
+        `;
+        resBox.classList.remove("final");
+        resBox.classList.add("show");
+        playStepChime();
+      } else {
+        lastWinner = winner;
+        subEl.textContent = `🎉 【${selectedArea}】からの次回予想はこちら！`;
+        nameEl.textContent = `✨ ${lastWinner} ✨`;
+        hintEl.textContent = "この結果になるかも…！？次回の配信もお楽しみに🍴";
+        actEl.innerHTML = `
+          <button class="result-sub-btn" onclick="excludeLastWinner()">🚫 この県を外して引き直す</button>
+          <button class="result-sub-btn" onclick="spinRoulette()">🔄 同じ地方で引き直す</button>
+          <button class="result-sub-btn" onclick="backToAreaRoulette()">↩ 地方ルーレットからやり直す</button>
+        `;
+        resBox.classList.add("show", "final");
+        playFanfare();
+        launchConfetti();
+      }
+
+      updateRouletteUI();
+    }
+
+    function respinArea() {
+      if (isSpinning) return;
+      selectedArea = "";
+      spinRoulette();
+    }
+
+    function excludeLastArea() {
+      if (isSpinning || !selectedArea) return;
+      excludedAreas.add(selectedArea);
+      backToAreaRoulette();
+    }
+
+    function excludeLastWinner() {
+      if (isSpinning || !lastWinner) return;
+      targetPrefs = targetPrefs.filter(p => p !== lastWinner);
+      activePool = getPrefsInArea(selectedArea);
+      lastWinner = "";
+      document.getElementById("rouletteResult").classList.remove("show", "final");
+      renderTargetChecks();
+      updateRouletteUI();
+      drawWheel();
     }
 
     function renderAll() {
@@ -1386,7 +1926,7 @@
         if (!pref || !name) return;
 
         const url = (cols[2] || "").trim();
-        const category = (cols[3] || "").trim();
+        const category = normalizeCategory(cols[3], name);
         const memo = (cols[4] || "").trim();
 
         const yt = parseYouTube(url);
@@ -1444,6 +1984,7 @@
 
       renderAreaProgress();
       renderStatusPills();
+      resetRouletteTargets();
 
       const prefSelect = document.getElementById("prefSelect");
       prefSelect.innerHTML = `<option value="">すべての都道府県（開催順）</option>`;
@@ -1460,7 +2001,7 @@
       items.forEach(i => {
         if (i.category) catCounts[i.category] = (catCounts[i.category] || 0) + 1;
       });
-      const chipOrder = ["スイーツ", "飲み物", "スナック・塩菓子", "おつまみ・惣菜", "麺・ご飯・スープ", "調味料・ご飯のお供"];
+      const chipOrder = ["スイーツ・スナック", "飲み物", "おつまみ・惣菜", "麺・ごはん", "スープ", "調味料・ご飯のお供"];
       catList = [...new Set([...chipOrder, ...Object.keys(catCounts)])].filter(c => catCounts[c] > 0);
 
       renderStats();
