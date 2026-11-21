@@ -175,9 +175,17 @@
       display: block;
       margin: 0 auto;
       filter: drop-shadow(0 10px 18px rgba(90, 56, 38, 0.14));
-      transition: transform 0.25s ease;
+      transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1); /* ぽよんと弾む動き */
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent; /* スマホの青いタップ枠を消す */
     }
-    .profile-illust:hover { transform: translateY(-4px) scale(1.05); }
+    /* PCのマウスオーバー */
+    @media (hover: hover) {
+      .profile-illust:hover { transform: translateY(-4px) scale(1.05); }
+    }
+    /* スマホのタップ（押した瞬間＋タップで拡大切り替え） */
+    .profile-illust:active { transform: scale(0.96); }
+    .profile-illust.is-zoomed { transform: translateY(-4px) scale(1.07); }
     .illust-caption {
       display: inline-block;
       margin-top: 0.45rem;
@@ -588,6 +596,7 @@
       <div class="profile-wrap">
         <div id="illustBox" class="profile-illust-box">
           <img src="rio-illust.png" alt="竹辺 莉央 全身イラスト" class="profile-illust"
+               onclick="this.classList.toggle('is-zoomed')"
                onerror="document.getElementById('illustBox').style.display='none';" />
           <div id="illustCaption" class="illust-caption"></div>
         </div>
