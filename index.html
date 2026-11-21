@@ -91,15 +91,15 @@
     }
 
     /* ==========================================
-       メインコンテナ・共通カード
+       メインコンテナ・案内バナー・3ステップ図解
        ========================================== */
     main { max-width: 1020px; margin: 0 auto; padding: 1.6rem 1rem 4rem; }
 
     .intro-banner {
       background: #FFFDF9;
       border: 1.5px solid var(--border-soft);
-      border-radius: 16px;
-      padding: 1rem 1.4rem;
+      border-radius: 18px;
+      padding: 1.2rem 1.4rem;
       margin-bottom: 1.5rem;
       text-align: center;
       box-shadow: 0 3px 10px rgba(90, 56, 38, 0.04);
@@ -122,6 +122,84 @@
       color: var(--choco-brown);
       white-space: pre-line;
       line-height: 1.7;
+    }
+
+    /* 最終更新＆最新収録回ステータス */
+    .status-pill-row {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-top: 0.85rem;
+    }
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      background: #FAF6F0;
+      border: 1px solid #E2D5C7;
+      color: var(--muted-text);
+      font-size: 0.76rem;
+      font-weight: bold;
+      padding: 0.22rem 0.75rem;
+      border-radius: 999px;
+    }
+    .status-pill.highlight {
+      background: #FFF4EB;
+      border-color: #FFD2B3;
+      color: #C9530E;
+    }
+
+    /* 3ステップ図解 */
+    .steps-section {
+      margin-top: 1.1rem;
+      padding-top: 1rem;
+      border-top: 1.5px dashed #E8DFD5;
+    }
+    .steps-heading {
+      font-size: 0.8rem;
+      font-weight: bold;
+      color: var(--muted-text);
+      margin-bottom: 0.65rem;
+      letter-spacing: 0.05em;
+    }
+    .steps-grid {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr auto 1fr;
+      align-items: stretch;
+      gap: 0.55rem;
+      text-align: left;
+    }
+    .step-box {
+      background: #FFFFFF;
+      border: 1.5px solid var(--border-soft);
+      border-radius: 12px;
+      padding: 0.75rem 0.85rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+    .step-num {
+      display: inline-block;
+      align-self: flex-start;
+      font-size: 0.7rem;
+      font-weight: bold;
+      color: #fff;
+      background: var(--choco-brown);
+      padding: 0.1rem 0.5rem;
+      border-radius: 999px;
+    }
+    .step-box.s2 .step-num { background: var(--done-orange); }
+    .step-box.s3 .step-num { background: var(--next-pink); }
+    .step-title { font-size: 0.88rem; font-weight: bold; color: var(--choco-brown); }
+    .step-desc { font-size: 0.77rem; color: var(--muted-text); line-height: 1.45; }
+    .step-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--done-orange);
+      font-weight: bold;
+      font-size: 1rem;
     }
 
     .card {
@@ -175,17 +253,16 @@
       display: block;
       margin: 0 auto;
       filter: drop-shadow(0 10px 18px rgba(90, 56, 38, 0.14));
-      transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1); /* ぽよんと弾む動き */
+      transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
       cursor: pointer;
-      -webkit-tap-highlight-color: transparent; /* スマホの青いタップ枠を消す */
+      -webkit-tap-highlight-color: transparent;
     }
-    /* PCのマウスオーバー */
     @media (hover: hover) {
-      .profile-illust:hover { transform: translateY(-4px) scale(1.05); }
+      .profile-illust:hover { transform: translateY(-4px) scale(1.04); }
     }
-    /* スマホのタップ（押した瞬間＋タップで拡大切り替え） */
     .profile-illust:active { transform: scale(0.96); }
-    .profile-illust.is-zoomed { transform: translateY(-4px) scale(1.07); }
+    .profile-illust.is-zoomed { transform: translateY(-4px) scale(1.06); }
+
     .illust-caption {
       display: inline-block;
       margin-top: 0.45rem;
@@ -293,8 +370,44 @@
     .profile-btn:hover { transform: translateY(-2px); opacity: 0.94; }
 
     /* ==========================================
-       47都道府県 旅の記録（地図・開催順・詳細）
+       47都道府県 旅の記録（エリア別進捗・地図・開催順）
        ========================================== */
+    .progress-wrap { margin-bottom: 0.75rem; }
+    .progress-bar-bg { background: var(--unvisited); border-radius: 999px; height: 14px; overflow: hidden; }
+    .progress-bar-fill { background: var(--done-orange); height: 100%; width: 0%; transition: width 0.5s ease; }
+
+    /* エリア別制覇率ミニバッジ */
+    .area-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 1.15rem;
+    }
+    .area-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.76rem;
+      font-weight: bold;
+      padding: 0.25rem 0.65rem;
+      border-radius: 8px;
+      background: var(--unvisited);
+      color: var(--muted-text);
+      border: 1px solid #E2D7CC;
+    }
+    .area-badge.has-progress {
+      background: #FFF6EE;
+      color: var(--choco-brown);
+      border-color: #FFD1AD;
+    }
+    .area-badge.completed {
+      background: var(--done-orange);
+      color: #fff;
+      border-color: var(--done-orange);
+      box-shadow: 0 2px 6px rgba(255, 138, 61, 0.28);
+    }
+    .area-count { opacity: 0.9; }
+
     .map-controls {
       display: flex;
       justify-content: space-between;
@@ -332,10 +445,6 @@
       transition: transform 0.15s, opacity 0.15s;
     }
     .playlist-btn:hover { transform: translateY(-2px); opacity: 0.92; }
-
-    .progress-wrap { margin-bottom: 0.9rem; }
-    .progress-bar-bg { background: var(--unvisited); border-radius: 999px; height: 14px; overflow: hidden; }
-    .progress-bar-fill { background: var(--done-orange); height: 100%; width: 0%; transition: width 0.5s ease; }
 
     .legend { display: flex; gap: 0.9rem; font-size: 0.84rem; margin-bottom: 0.9rem; flex-wrap: wrap; align-items: center; }
     .legend span { display: flex; align-items: center; gap: 0.35rem; }
@@ -448,40 +557,113 @@
     .ep-video-title { font-size: 0.98rem; font-weight: bold; word-break: break-word; }
 
     /* ==========================================
-       食べたもの検索・カテゴリタグ・スッキリリスト
+       食べたもの検索・ジャンル集計グラフ・リスト
        ========================================== */
-    .filters { display: grid; grid-template-columns: 2fr 1fr; gap: 0.65rem; margin-bottom: 0.85rem; }
+    .filters { display: grid; grid-template-columns: 2fr 1fr; gap: 0.65rem; margin-bottom: 1rem; }
     input, select {
       width: 100%; padding: 0.62rem 0.85rem; border: 1.5px solid #D9CEC2; border-radius: 10px;
       font-size: 0.92rem; font-family: inherit; color: var(--choco-brown); background: #fff;
     }
     input:focus, select:focus { outline: none; border-color: var(--choco-brown); }
 
-    .cat-chips { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 1rem; }
-    .cat-chip {
-      padding: 0.35rem 0.8rem; border-radius: 999px; border: 1.5px solid #D9CEC2;
-      background: #fff; color: var(--choco-brown); font-size: 0.8rem; font-weight: bold;
-      cursor: pointer; font-family: inherit; transition: all 0.12s;
+    /* タグ別集計グラフパネル */
+    .stats-panel {
+      background: #FCF9F5;
+      border: 1.5px solid var(--border-soft);
+      border-radius: 14px;
+      padding: 0.95rem 1.05rem;
+      margin-bottom: 1.1rem;
     }
-    .cat-chip.active { background: var(--choco-brown); border-color: var(--choco-brown); color: #fff; }
+    .stats-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 0.6rem;
+    }
+    .stats-title { font-size: 0.82rem; font-weight: bold; color: var(--muted-text); }
+    .reset-cat-btn {
+      border: 1px solid #D9CEC2;
+      background: #fff;
+      color: var(--choco-brown);
+      font-size: 0.75rem;
+      font-weight: bold;
+      padding: 0.2rem 0.65rem;
+      border-radius: 999px;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .reset-cat-btn.active { background: var(--choco-brown); color: #fff; border-color: var(--choco-brown); }
 
-    .tag.cat-sweets, .cat-chip.cat-sweets { background: #FFF0F5; color: #C2275E; border-color: #FFBBD2; }
-    .cat-chip.cat-sweets.active { background: #E84A7F; color: #fff; border-color: #E84A7F; }
+    /* 100% 積み上げ横棒グラフ */
+    .stack-bar {
+      display: flex;
+      height: 12px;
+      border-radius: 999px;
+      overflow: hidden;
+      background: var(--unvisited);
+      margin-bottom: 0.75rem;
+      gap: 1.5px;
+    }
+    .stack-seg {
+      height: 100%;
+      cursor: pointer;
+      transition: opacity 0.15s;
+    }
+    .stack-seg:hover { opacity: 0.8; }
 
-    .tag.cat-drink, .cat-chip.cat-drink { background: #EBF7FF; color: #1971A8; border-color: #A8D8F8; }
-    .cat-chip.cat-drink.active { background: #2993D4; color: #fff; border-color: #2993D4; }
+    /* 各カテゴリのミニ横棒カード（絞り込みボタン兼用） */
+    .cat-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.45rem;
+    }
+    .cat-stat-card {
+      background: #fff;
+      border: 1.5px solid #EAE0D5;
+      border-radius: 10px;
+      padding: 0.45rem 0.65rem;
+      cursor: pointer;
+      text-align: left;
+      font-family: inherit;
+      color: var(--choco-brown);
+      transition: transform 0.12s, border-color 0.12s, box-shadow 0.12s;
+    }
+    .cat-stat-card:hover { transform: translateY(-1px); border-color: var(--done-orange); }
+    .cat-stat-card.active {
+      border-width: 2px;
+      box-shadow: 0 3px 8px rgba(90, 56, 38, 0.14);
+    }
+    .cat-stat-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.77rem;
+      font-weight: bold;
+      margin-bottom: 0.3rem;
+    }
+    .cat-stat-name { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .cat-stat-num { color: var(--muted-text); font-size: 0.72rem; flex-shrink: 0; }
+    .cat-mini-bar-bg {
+      height: 6px;
+      border-radius: 999px;
+      background: #F3ECE4;
+      overflow: hidden;
+    }
+    .cat-mini-bar-fill {
+      height: 100%;
+      border-radius: 999px;
+    }
 
-    .tag.cat-snack, .cat-chip.cat-snack { background: #FFF6DC; color: #9E6200; border-color: #F2D27A; }
-    .cat-chip.cat-snack.active { background: #D9920B; color: #fff; border-color: #D9920B; }
-
-    .tag.cat-side, .cat-chip.cat-side { background: #FFF0E5; color: #B84C14; border-color: #F7C29E; }
-    .cat-chip.cat-side.active { background: #E06824; color: #fff; border-color: #E06824; }
-
-    .tag.cat-meal, .cat-chip.cat-meal { background: #EDF8EA; color: #2E6F29; border-color: #B4DBA8; }
-    .cat-chip.cat-meal.active { background: #4C9445; color: #fff; border-color: #4C9445; }
-
-    .tag.cat-seasoning, .cat-chip.cat-seasoning { background: #F4ECE4; color: #5A3826; border-color: #D4BFA9; }
-    .cat-chip.cat-seasoning.active { background: #7D523A; color: #fff; border-color: #7D523A; }
+    /* リスト内タグ色 */
+    .tag.cat-sweets    { background: #FFF0F5; color: #C2275E; border-color: #FFBBD2; }
+    .tag.cat-drink     { background: #EBF7FF; color: #1971A8; border-color: #A8D8F8; }
+    .tag.cat-snack     { background: #FFF6DC; color: #9E6200; border-color: #F2D27A; }
+    .tag.cat-side      { background: #FFF0E5; color: #B84C14; border-color: #F7C29E; }
+    .tag.cat-meal      { background: #EDF8EA; color: #2E6F29; border-color: #B4DBA8; }
+    .tag.cat-seasoning { background: #F4ECE4; color: #5A3826; border-color: #D4BFA9; }
 
     .souvenir-list { background: #fff; border: 1.5px solid var(--border-soft); border-radius: 12px; overflow: hidden; }
     .item-row {
@@ -518,6 +700,9 @@
       .profile-illust { height: 280px; }
       .prof-spec-item { flex-direction: column; gap: 0.25rem; }
       .prof-spec-label { min-width: auto; }
+      .steps-grid { grid-template-columns: 1fr; gap: 0.4rem; }
+      .step-arrow { transform: rotate(90deg); font-size: 0.85rem; padding: 0; }
+      .cat-stats-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
     @media (max-width: 640px) {
@@ -527,14 +712,18 @@
       .nav-link { font-size: 0.74rem; padding: 0.35rem 0.6rem; }
 
       main { padding: 1rem 0.6rem 3rem; }
-      .intro-banner { padding: 0.85rem 0.9rem; margin-bottom: 1rem; }
+      .intro-banner { padding: 0.9rem 0.85rem; margin-bottom: 1rem; }
       .intro-banner p { font-size: 0.84rem; }
+      .status-pill { font-size: 0.7rem; padding: 0.2rem 0.6rem; }
 
       .card { padding: 1rem 0.85rem; margin-bottom: 1rem; border-radius: 14px; scroll-margin-top: 56px; }
       h2 { font-size: 1.1rem; flex-direction: column; align-items: flex-start; gap: 0.2rem; }
       .profile-name { font-size: 1.55rem; }
       .profile-actions { flex-direction: column; }
       .profile-btn { width: 100%; }
+
+      .area-grid { gap: 0.3rem; }
+      .area-badge { font-size: 0.7rem; padding: 0.2rem 0.5rem; }
 
       .map-controls { flex-direction: column; align-items: stretch; gap: 0.5rem; }
       .view-tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 0.45rem; }
@@ -560,7 +749,9 @@
       .episode-videos { grid-template-columns: 1fr; gap: 0.85rem; }
 
       .filters { grid-template-columns: 1fr; }
-      .cat-chip { font-size: 0.76rem; padding: 0.32rem 0.68rem; }
+      .stats-panel { padding: 0.75rem; }
+      .cat-stat-card { padding: 0.4rem 0.5rem; }
+      .cat-stat-top { font-size: 0.72rem; }
 
       .item-row { flex-direction: column; align-items: stretch; gap: 0.45rem; padding: 0.7rem 0.8rem; }
       .item-main { width: 100%; }
@@ -586,11 +777,38 @@
   </nav>
 
   <main>
+    <!-- サイト概要・最新状況・3ステップ図解 -->
     <div class="intro-banner">
       <span class="intro-badge">🍴 このサイトについて</span>
       <p id="siteSubtitle"></p>
+
+      <div id="statusPills" class="status-pill-row"></div>
+
+      <div class="steps-section">
+        <div class="steps-heading">📖 企画の流れ（毎月開催！）</div>
+        <div class="steps-grid">
+          <div class="step-box s1">
+            <span class="step-num">STEP 1</span>
+            <div class="step-title">🎯 ルーレットで県を決定</div>
+            <div class="step-desc">食べよう配信の最後にルーレットで、次の月の都道府県をランダムに決めます！</div>
+          </div>
+          <div class="step-arrow">▶</div>
+          <div class="step-box s2">
+            <span class="step-num">STEP 2</span>
+            <div class="step-title">🛒「見つけよう」でお土産選び</div>
+            <div class="step-desc">お土産ランキングを見ながら、竹辺莉央が厳選＆実際に購入！</div>
+          </div>
+          <div class="step-arrow">▶</div>
+          <div class="step-box s3">
+            <span class="step-num">STEP 3</span>
+            <div class="step-title">🍽️「食べよう」で実食レポ</div>
+            <div class="step-desc">届いたご当地グルメを配信で実食＆栄養士目線で食レポ！</div>
+          </div>
+        </div>
+      </div>
     </div>
 
+    <!-- PROFILE -->
     <section id="sec-profile" class="card profile-card">
       <h2><span>✨ PROFILE</span></h2>
       <div class="profile-wrap">
@@ -618,6 +836,7 @@
       </div>
     </section>
 
+    <!-- 旅の記録 -->
     <section id="sec-map" class="card">
       <h2>
         <span>📍 47都道府県 旅の記録</span>
@@ -627,6 +846,9 @@
       <div class="progress-wrap">
         <div class="progress-bar-bg"><div id="progressBar" class="progress-bar-fill"></div></div>
       </div>
+
+      <!-- エリア別制覇率ミニバッジ -->
+      <div id="areaProgress" class="area-grid"></div>
 
       <div class="map-controls">
         <div class="view-tabs" style="margin-bottom:0;">
@@ -655,6 +877,7 @@
       <div id="prefDetail" class="detail-box"></div>
     </section>
 
+    <!-- 食べたもの検索 -->
     <section id="sec-search" class="card">
       <h2>
         <span>🍽️ 食べたもの検索</span>
@@ -666,7 +889,16 @@
         <select id="prefSelect"><option value="">すべての都道府県（開催順）</option></select>
       </div>
 
-      <div id="catChips" class="cat-chips"></div>
+      <!-- ジャンル別集計グラフ＆絞り込み -->
+      <div id="statsPanel" class="stats-panel" style="display:none;">
+        <div class="stats-header">
+          <span class="stats-title">📊 ジャンル別の内訳（タップで絞り込みできます）</span>
+          <button id="resetCatBtn" class="reset-cat-btn active" onclick="setCat('')">すべて表示</button>
+        </div>
+        <div id="stackBar" class="stack-bar"></div>
+        <div id="catStatsGrid" class="cat-stats-grid"></div>
+      </div>
+
       <div id="souvenirList" class="souvenir-list">
         <p style="padding:1rem; margin:0; color:var(--muted-text);">データを読み込み中です...</p>
       </div>
@@ -706,13 +938,23 @@
       { id:"tokushima",name:"徳島",   c:7,  r:11 }
     ];
 
+    const AREA_DEFS = [
+      { name: "北海道・東北", prefs: ["北海道", "青森", "岩手", "宮城", "秋田", "山形", "福島"] },
+      { name: "関東",         prefs: ["茨城", "栃木", "群馬", "埼玉", "千葉", "東京", "神奈川"] },
+      { name: "中部",         prefs: ["新潟", "富山", "石川", "福井", "山梨", "長野", "岐阜", "静岡", "愛知"] },
+      { name: "近畿",         prefs: ["三重", "滋賀", "京都", "大阪", "兵庫", "奈良", "和歌山"] },
+      { name: "中国",         prefs: ["鳥取", "島根", "岡山", "広島", "山口"] },
+      { name: "四国",         prefs: ["徳島", "香川", "愛媛", "高知"] },
+      { name: "九州・沖縄",   prefs: ["福岡", "佐賀", "長崎", "熊本", "大分", "宮崎", "鹿児島", "沖縄"] }
+    ];
+
     const CAT_META = {
-      "スイーツ":          { icon: "🍰", cls: "cat-sweets" },
-      "飲み物":            { icon: "🥤", cls: "cat-drink" },
-      "スナック・塩菓子":  { icon: "🍘", cls: "cat-snack" },
-      "おつまみ・惣菜":    { icon: "🍢", cls: "cat-side" },
-      "麺・ご飯・スープ":  { icon: "🍜", cls: "cat-meal" },
-      "調味料・ご飯のお供":{ icon: "🧂", cls: "cat-seasoning" }
+      "スイーツ":          { icon: "🍰", cls: "cat-sweets",    color: "#E84A7F", bg: "#FFF0F5" },
+      "飲み物":            { icon: "🥤", cls: "cat-drink",     color: "#2993D4", bg: "#EBF7FF" },
+      "スナック・塩菓子":  { icon: "🍘", cls: "cat-snack",     color: "#D9920B", bg: "#FFF6DC" },
+      "おつまみ・惣菜":    { icon: "🍢", cls: "cat-side",      color: "#E06824", bg: "#FFF0E5" },
+      "麺・ご飯・スープ":  { icon: "🍜", cls: "cat-meal",      color: "#4C9445", bg: "#EDF8EA" },
+      "調味料・ご飯のお供":{ icon: "🧂", cls: "cat-seasoning", color: "#7D523A", bg: "#F4ECE4" }
     };
 
     function esc(str) {
@@ -1027,20 +1269,103 @@
       `;
     }
 
+    // カテゴリ絞り込み（同じカテゴリをもう1回押すと解除）
     function setCat(cat) {
-      selectedCat = cat;
-      renderChips();
+      selectedCat = (selectedCat === cat && cat !== "") ? "" : cat;
+      renderStats();
       renderAll();
     }
 
-    function renderChips() {
-      const chipsEl = document.getElementById("catChips");
-      let html = `<button class="cat-chip ${selectedCat === "" ? "active" : ""}" onclick="setCat('')">すべて (${items.length})</button>`;
+    // ジャンル別集計グラフ＆絞り込みボタン描画
+    function renderStats() {
+      const panel = document.getElementById("statsPanel");
+      const total = items.length;
+      if (total === 0 || catList.length === 0) {
+        panel.style.display = "none";
+        return;
+      }
+      panel.style.display = "block";
+
+      document.getElementById("resetCatBtn").classList.toggle("active", selectedCat === "");
+
+      const stackEl = document.getElementById("stackBar");
+      const gridEl = document.getElementById("catStatsGrid");
+
+      let stackHtml = "";
+      let cardsHtml = "";
+
       catList.forEach(c => {
-        const meta = CAT_META[c] || { icon: "🏷️", cls: "" };
-        html += `<button class="cat-chip ${meta.cls} ${selectedCat === c ? "active" : ""}" onclick="setCat('${esc(c)}')">${meta.icon} ${esc(c)} (${catCounts[c]})</button>`;
+        const count = catCounts[c] || 0;
+        const pct = Math.round((count / total) * 100);
+        const exactPct = ((count / total) * 100).toFixed(1);
+        const meta = CAT_META[c] || { icon: "🏷️", cls: "", color: "#856E60", bg: "#FAF6F0" };
+        const isActive = selectedCat === c;
+
+        stackHtml += `<div class="stack-seg" style="width:${exactPct}%; background:${meta.color};" title="${esc(c)}: ${count}品 (${pct}%)" onclick="setCat('${esc(c)}')"></div>`;
+
+        cardsHtml += `
+          <button class="cat-stat-card ${isActive ? "active" : ""}"
+                  style="${isActive ? `border-color:${meta.color}; background:${meta.bg};` : ""}"
+                  onclick="setCat('${esc(c)}')">
+            <div class="cat-stat-top">
+              <span class="cat-stat-name">${meta.icon} ${esc(c)}</span>
+              <span class="cat-stat-num">${count}品 (${pct}%)</span>
+            </div>
+            <div class="cat-mini-bar-bg">
+              <div class="cat-mini-bar-fill" style="width:${exactPct}%; background:${meta.color};"></div>
+            </div>
+          </button>
+        `;
       });
-      chipsEl.innerHTML = html;
+
+      stackEl.innerHTML = stackHtml;
+      gridEl.innerHTML = cardsHtml;
+    }
+
+    // エリア（地方）別制覇率ミニバッジ描画
+    function renderAreaProgress() {
+      const areaEl = document.getElementById("areaProgress");
+      areaEl.innerHTML = AREA_DEFS.map(area => {
+        const total = area.prefs.length;
+        const done = area.prefs.filter(p => prefMap[p] && prefMap[p].length > 0).length;
+        const isComp = done === total;
+        const cls = isComp ? "completed" : (done > 0 ? "has-progress" : "");
+        return `
+          <span class="area-badge ${cls}">
+            <span>${esc(area.name)}</span>
+            <span class="area-count">${isComp ? `${done}/${total} 制覇！🎉` : `${done}/${total}`}</span>
+          </span>
+        `;
+      }).join("");
+    }
+
+    // 最終更新日＆最新収録回ステータス描画
+    function renderStatusPills() {
+      const pillEl = document.getElementById("statusPills");
+      let latestDone = null;
+      let latestNext = null;
+
+      episodeList.forEach(ep => {
+        const pName = normPref(ep.pref);
+        if (prefMap[pName] && prefMap[pName].length > 0) {
+          latestDone = { no: ep.no, pref: pName };
+        } else if (ep.selectUrl || ep.status === "next") {
+          latestNext = { no: ep.no, pref: pName };
+        }
+      });
+
+      let html = "";
+      if (SITE_CONFIG.lastUpdated) {
+        html += `<span class="status-pill">🕒 最終更新：${esc(SITE_CONFIG.lastUpdated)}</span>`;
+      }
+      if (latestDone) {
+        let epText = `第${latestDone.no}回 ${latestDone.pref}（食べよう編）`;
+        if (latestNext && latestNext.no > latestDone.no) {
+          epText += ` ／ 第${latestNext.no}回 ${latestNext.pref}（見つけよう編）`;
+        }
+        html += `<span class="status-pill highlight">📺 最新：${esc(epText)}まで反映済み</span>`;
+      }
+      pillEl.innerHTML = html;
     }
 
     function renderAll() {
@@ -1135,6 +1460,9 @@
         `${doneCount} / 47 都道府県制覇（${Math.round(doneCount / 47 * 100)}%）｜計 ${items.length}品`;
       document.getElementById("progressBar").style.width = `${(doneCount / 47) * 100}%`;
 
+      renderAreaProgress();
+      renderStatusPills();
+
       const prefSelect = document.getElementById("prefSelect");
       prefSelect.innerHTML = `<option value="">すべての都道府県（開催順）</option>`;
       episodeList.forEach(ep => {
@@ -1153,7 +1481,7 @@
       const chipOrder = ["スイーツ", "飲み物", "スナック・塩菓子", "おつまみ・惣菜", "麺・ご飯・スープ", "調味料・ご飯のお供"];
       catList = [...new Set([...chipOrder, ...Object.keys(catCounts)])].filter(c => catCounts[c] > 0);
 
-      renderChips();
+      renderStats();
       renderAll();
     }
 
