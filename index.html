@@ -28,7 +28,9 @@
       overflow-x: clip;
     }
 
-    /* ヘッダー（優しい水玉ココアブラウン＋ロゴ） */
+    /* ==========================================
+       ヘッダー・追従目次バー
+       ========================================== */
     header {
       background-color: #845D47;
       background-image:
@@ -51,7 +53,6 @@
     }
     #fallbackTitle { display: none; margin: 0; font-size: 1.6rem; color: #FFFDF9; }
 
-    /* ヘッダー直下の追従目次バー（スクロールで上部に残る） */
     .sticky-nav {
       position: sticky;
       top: 0;
@@ -89,9 +90,11 @@
       box-shadow: 0 2px 6px rgba(90, 56, 38, 0.18);
     }
 
+    /* ==========================================
+       メインコンテナ・共通カード
+       ========================================== */
     main { max-width: 1020px; margin: 0 auto; padding: 1.6rem 1rem 4rem; }
 
-    /* サイト案内バナー */
     .intro-banner {
       background: #FFFDF9;
       border: 1.5px solid var(--border-soft);
@@ -142,7 +145,9 @@
       gap: 0.4rem;
     }
 
-    /* 竹辺莉央さん紹介カード */
+    /* ==========================================
+       PROFILE セクション
+       ========================================== */
     .profile-card {
       position: relative;
       overflow: hidden;
@@ -279,7 +284,9 @@
     }
     .profile-btn:hover { transform: translateY(-2px); opacity: 0.94; }
 
-    /* 旅の記録コントロール行 */
+    /* ==========================================
+       47都道府県 旅の記録（地図・開催順・詳細）
+       ========================================== */
     .map-controls {
       display: flex;
       justify-content: space-between;
@@ -318,7 +325,6 @@
     }
     .playlist-btn:hover { transform: translateY(-2px); opacity: 0.92; }
 
-    /* 進捗バー */
     .progress-wrap { margin-bottom: 0.9rem; }
     .progress-bar-bg { background: var(--unvisited); border-radius: 999px; height: 14px; overflow: hidden; }
     .progress-bar-fill { background: var(--done-orange); height: 100%; width: 0%; transition: width 0.5s ease; }
@@ -327,7 +333,6 @@
     .legend span { display: flex; align-items: center; gap: 0.35rem; }
     .dot { width: 13px; height: 13px; border-radius: 4px; display: inline-block; }
 
-    /* 日本地図（PC・スマホ両方で横スクロールなしフィット） */
     .map-scroll { width: 100%; padding: 4px 2px 6px; }
     .japan-map {
       display: grid;
@@ -362,7 +367,6 @@
     .status-next { background: var(--next-pink); color: #fff; }
     .status-none { background: var(--unvisited); color: var(--muted-text); }
 
-    /* 開催順リスト */
     .ep-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(min(180px, 100%), 1fr));
@@ -395,7 +399,6 @@
     .ep-pref { font-size: 1.02rem; font-weight: bold; margin: 0.1rem 0; }
     .ep-sub { font-size: 0.76rem; color: var(--muted-text); }
 
-    /* 詳細エリア */
     .detail-box {
       margin-top: 1.3rem;
       padding: 1.3rem;
@@ -409,7 +412,6 @@
     .detail-header h3 { margin: 0; font-size: 1.35rem; }
     .badge { display: inline-block; padding: 0.22rem 0.8rem; border-radius: 999px; font-size: 0.8rem; font-weight: bold; color: #fff; }
 
-    /* 大きなサムネカード（スマホではみ出さない安全設計） */
     .episode-videos {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
@@ -437,7 +439,9 @@
     .ep-video-step.eat { background: var(--next-pink); }
     .ep-video-title { font-size: 0.98rem; font-weight: bold; word-break: break-word; }
 
-    /* 検索フォーム */
+    /* ==========================================
+       食べたもの検索・カテゴリタグ・スッキリリスト
+       ========================================== */
     .filters { display: grid; grid-template-columns: 2fr 1fr; gap: 0.65rem; margin-bottom: 0.85rem; }
     input, select {
       width: 100%; padding: 0.62rem 0.85rem; border: 1.5px solid #D9CEC2; border-radius: 10px;
@@ -445,7 +449,6 @@
     }
     input:focus, select:focus { outline: none; border-color: var(--choco-brown); }
 
-    /* カテゴリタグ */
     .cat-chips { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 1rem; }
     .cat-chip {
       padding: 0.35rem 0.8rem; border-radius: 999px; border: 1.5px solid #D9CEC2;
@@ -472,7 +475,6 @@
     .tag.cat-seasoning, .cat-chip.cat-seasoning { background: #F4ECE4; color: #5A3826; border-color: #D4BFA9; }
     .cat-chip.cat-seasoning.active { background: #7D523A; color: #fff; border-color: #7D523A; }
 
-    /* スッキリリスト */
     .souvenir-list { background: #fff; border: 1.5px solid var(--border-soft); border-radius: 12px; overflow: hidden; }
     .item-row {
       display: flex; align-items: center; justify-content: space-between; gap: 1rem;
@@ -500,7 +502,7 @@
     footer { text-align: center; padding: 1.5rem 1rem; font-size: 0.78rem; color: var(--muted-text); }
 
     /* ==========================================
-       📱 スマホ・タブレット最適化レスポンシブ
+       スマホ・タブレット最適化レスポンシブ
        ========================================== */
     @media (max-width: 780px) {
       .profile-wrap { flex-direction: column; gap: 1rem; }
@@ -526,18 +528,13 @@
       .profile-actions { flex-direction: column; }
       .profile-btn { width: 100%; }
 
-      /* タブと再生リストをスマホで綺麗に整列 */
       .map-controls { flex-direction: column; align-items: stretch; gap: 0.5rem; }
       .view-tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 0.45rem; }
       .tab-btn { padding: 0.5rem 0.3rem; font-size: 0.78rem; text-align: center; }
       .playlist-btn { width: 100%; text-align: center; font-size: 0.82rem; padding: 0.5rem; }
 
-      /* スマホでも横スクロールなしで日本地図全体を表示 */
       .map-scroll { padding: 2px 0 4px; }
-      .japan-map {
-        grid-template-rows: repeat(11, 28px);
-        gap: 2px;
-      }
+      .japan-map { grid-template-rows: repeat(11, 28px); gap: 2px; }
       .pref-tile {
         font-size: 8.5px;
         border-radius: 4px;
@@ -546,12 +543,10 @@
         word-break: break-all;
       }
 
-      /* 開催順カードはスマホで2列 */
       .ep-grid { grid-template-columns: repeat(2, 1fr); gap: 0.45rem; }
       .ep-card { padding: 0.6rem 0.65rem; }
       .ep-pref { font-size: 0.95rem; }
 
-      /* 詳細ボックスと動画カードの余白を詰めてはみ出しゼロに */
       .detail-box { padding: 0.9rem 0.75rem; margin-top: 1rem; }
       .detail-header h3 { font-size: 1.2rem; }
       .episode-videos { grid-template-columns: 1fr; gap: 0.85rem; }
@@ -573,7 +568,6 @@
     <h1 id="fallbackTitle"></h1>
   </header>
 
-  <!-- ヘッダー直下の追従目次バー -->
   <nav class="sticky-nav" aria-label="目次">
     <div class="sticky-nav-inner">
       <a class="nav-link active" href="#sec-top">🔝 トップ</a>
@@ -584,13 +578,11 @@
   </nav>
 
   <main>
-    <!-- サイト概要 -->
     <div class="intro-banner">
       <span class="intro-badge">🍴 このサイトについて</span>
       <p id="siteSubtitle"></p>
     </div>
 
-    <!-- 0. PROFILE -->
     <section id="sec-profile" class="card profile-card">
       <h2><span>✨ PROFILE</span></h2>
       <div class="profile-wrap">
@@ -617,7 +609,6 @@
       </div>
     </section>
 
-    <!-- 1. 旅の記録 -->
     <section id="sec-map" class="card">
       <h2>
         <span>📍 47都道府県 旅の記録</span>
@@ -655,7 +646,6 @@
       <div id="prefDetail" class="detail-box"></div>
     </section>
 
-    <!-- 2. 食べたもの検索 -->
     <section id="sec-search" class="card">
       <h2>
         <span>🍽️ 食べたもの検索</span>
@@ -668,7 +658,9 @@
       </div>
 
       <div id="catChips" class="cat-chips"></div>
-      <div id="souvenirList" class="souvenir-list"></div>
+      <div id="souvenirList" class="souvenir-list">
+        <p style="padding:1rem; margin:0; color:var(--muted-text);">データを読み込み中です...</p>
+      </div>
     </section>
   </main>
 
@@ -908,7 +900,6 @@
       }
     }
 
-    // スクロール位置に合わせて上の目次バーをハイライト
     const sections = ["sec-top", "sec-profile", "sec-map", "sec-search"];
     window.addEventListener("scroll", () => {
       let current = "sec-top";
@@ -933,6 +924,8 @@
     let epByPref = {};
     let episodeList = [];
     let selectedCat = "";
+    let catCounts = {};
+    let catList = [];
 
     function selectPref(prefName) {
       document.querySelectorAll("[data-pref]").forEach(el => {
@@ -1031,8 +1024,6 @@
       renderAll();
     }
 
-    let catCounts = {};
-    let catList = [];
     function renderChips() {
       const chipsEl = document.getElementById("catChips");
       let html = `<button class="cat-chip ${selectedCat === "" ? "active" : ""}" onclick="setCat('')">すべて (${items.length})</button>`;
