@@ -58,7 +58,7 @@
       top: 0;
       z-index: 150;
       background: rgba(255, 253, 249, 0.96);
-      backdrop-filter: blur(8px);
+			      backdrop-filter: blur(8px);
       border-bottom: 1.5px solid var(--border-soft);
       box-shadow: 0 3px 10px rgba(90, 56, 38, 0.06);
       padding: 0.6rem 0.8rem;
@@ -838,7 +838,7 @@
           <div class="step-box s2">
             <span class="step-num">STEP 2</span>
             <div class="step-title">🛒「見つけよう」でお土産選び</div>
-            <div class="step-desc">お土産ランキングを見ながら、本人が約10品を厳選＆実際に購入！</div>
+            <div class="step-desc">お土産ランキングを見ながら、竹辺が厳選＆実際に購入！</div>
           </div>
           <div class="step-arrow">▶</div>
           <div class="step-box s3">
@@ -1452,9 +1452,7 @@
       });
 
       let html = "";
-      if (SITE_CONFIG.lastUpdated) {
-        html += `<span class="status-pill">🕒 最終更新：${esc(SITE_CONFIG.lastUpdated)}</span>`;
-      }
+
       if (latestDone) {
         let epText = `第${latestDone.no}回 ${latestDone.pref}（食べよう編）`;
         if (latestNext && latestNext.no > latestDone.no) {
