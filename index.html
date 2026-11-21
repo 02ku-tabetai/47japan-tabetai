@@ -95,29 +95,12 @@
        ========================================== */
     main { max-width: 1020px; margin: 0 auto; padding: 1.6rem 1rem 4rem; }
 
-    .intro-banner {
-      background: #FFFDF9;
-      border: 1.5px solid var(--border-soft);
-      border-radius: 18px;
-      padding: 1.2rem 1.4rem;
-      margin-bottom: 1.5rem;
-      text-align: center;
-      box-shadow: 0 3px 10px rgba(90, 56, 38, 0.04);
-    }
-    .intro-badge {
-      display: inline-block;
-      background: #FFF0F5;
-      color: #D12C68;
-      border: 1px solid #FFC2D8;
-      font-size: 0.76rem;
-      font-weight: bold;
-      padding: 0.15rem 0.75rem;
-      border-radius: 999px;
-      margin-bottom: 0.45rem;
-    }
-    .intro-banner p {
+    /* 「このサイトについて」カード（形は他と統一、色だけさりげなく区別） */
+    .intro-card { background: #FFFDF9; }
+    .intro-card h2 { border-left-color: var(--next-pink); } /* ← 他と完全統一したい時はこの1行を消す */
+    .intro-text {
       margin: 0;
-      font-size: 0.93rem;
+      font-size: 0.94rem;
       font-weight: bold;
       color: var(--choco-brown);
       white-space: pre-line;
@@ -127,7 +110,7 @@
     /* 最終更新＆最新収録回ステータス */
     .status-pill-row {
       display: flex;
-      justify-content: center;
+      justify-content: flex-start; 
       gap: 0.5rem;
       flex-wrap: wrap;
       margin-top: 0.85rem;
@@ -712,8 +695,7 @@
       .nav-link { font-size: 0.74rem; padding: 0.35rem 0.6rem; }
 
       main { padding: 1rem 0.6rem 3rem; }
-      .intro-banner { padding: 0.9rem 0.85rem; margin-bottom: 1rem; }
-      .intro-banner p { font-size: 0.84rem; }
+
       .status-pill { font-size: 0.7rem; padding: 0.2rem 0.6rem; }
 
       .card { padding: 1rem 0.85rem; margin-bottom: 1rem; border-radius: 14px; scroll-margin-top: 56px; }
@@ -778,9 +760,9 @@
 
   <main>
     <!-- サイト概要・最新状況・3ステップ図解 -->
-    <div class="intro-banner">
-      <span class="intro-badge">🍴 このサイトについて</span>
-      <p id="siteSubtitle"></p>
+    <section class="card intro-card">
+      <h2><span>🍴 このサイトについて</span></h2>
+      <p id="siteSubtitle" class="intro-text"></p>
 
       <div id="statusPills" class="status-pill-row"></div>
 
