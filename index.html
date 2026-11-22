@@ -41,26 +41,27 @@
       background-position: 0 0, 18px 18px, 0 0;
       border-bottom: 5px solid var(--done-orange);
       box-shadow: 0 4px 16px rgba(90, 56, 38, 0.14);
-      padding: 3rem 1rem 4rem;
+      padding: 5.5rem 1rem 5rem;
       text-align: center;
-      transition: padding 0.1s ease;
+      transition: padding 0.35s ease;
     }
     header.is-compact {
       padding: 1.8rem 1rem 1.6rem;
     }
     .header-logo {
-      width: 768px;
+      width: 720px;
       max-width: 94%;
       height: auto;
       display: block;
       margin: 0 auto;
       filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.25));
-      transition: width 0.1s ease, max-width 0.1s ease;
+      transition: width 0.35s ease, max-width 0.35s ease;
     }
     header.is-compact .header-logo {
       width: 500px;
       max-width: 92%;
     }
+
     #fallbackTitle { display: none; margin: 0; font-size: 1.6rem; color: #FFFDF9; }
 
     .sticky-nav {
@@ -736,7 +737,100 @@
     }
     .time-link:hover { background: var(--done-orange); color: #fff; border-color: var(--done-orange); }
 
-    footer { text-align: center; padding: 1.5rem 1rem; font-size: 0.78rem; color: var(--muted-text); }
+    footer { text-align: center; padding: 1.5rem 1rem 4.5rem; font-size: 0.78rem; color: var(--muted-text); white-space: pre-line; }
+
+    /* ==========================================
+       📩 右下フローティング連絡ボタン＆モーダル
+       ========================================== */
+    .contact-fab {
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      z-index: 300;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: rgba(255, 253, 249, 0.92);
+      backdrop-filter: blur(6px);
+      color: var(--choco-brown);
+      border: 1.5px solid #D9CEC2;
+      border-radius: 999px;
+      padding: 0.48rem 0.95rem;
+      font-family: inherit;
+      font-size: 0.78rem;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 3px 12px rgba(90, 56, 38, 0.14);
+      opacity: 0.88;
+      transition: all 0.15s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .contact-fab:hover {
+      opacity: 1;
+      border-color: var(--done-orange);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 16px rgba(90, 56, 38, 0.2);
+    }
+    @media (max-width: 640px) {
+      .contact-fab { right: 12px; bottom: 12px; padding: 0.42rem 0.78rem; font-size: 0.72rem; }
+    }
+
+    .contact-modal-bg {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: rgba(58, 36, 24, 0.55);
+      backdrop-filter: blur(3px);
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    .contact-modal-bg.open { display: flex; }
+    .contact-modal {
+      background: #FFFDF9;
+      border: 2px solid var(--border-soft);
+      border-radius: 18px;
+      width: min(580px, 100%);
+      max-height: 88vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.25);
+    }
+    .contact-modal-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.9rem 1.2rem;
+      border-bottom: 1.5px solid var(--border-soft);
+      background: #FAF6F0;
+    }
+    .contact-modal-head h3 { margin: 0; font-size: 1.05rem; }
+    .modal-close-btn {
+      border: none;
+      background: #EFEAE4;
+      color: var(--choco-brown);
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .modal-close-btn:hover { background: #E2D8CE; }
+    .contact-modal-body {
+      padding: 1rem 1.2rem 1.2rem;
+      overflow-y: auto;
+      font-size: 0.88rem;
+    }
+    .contact-iframe {
+      width: 100%;
+      height: 430px;
+      border: 1px solid var(--border-soft);
+      border-radius: 10px;
+      background: #fff;
+    }
 
     /* ==========================================
        スマホ・タブレット最適化レスポンシブ
@@ -758,9 +852,9 @@
     }
 
     @media (max-width: 640px) {
-      header { padding: 2.3rem 0.8rem 2rem; }
+      header { padding: 3.8rem 0.8rem 3.4rem; }
       header.is-compact { padding: 1.25rem 0.8rem; }
-      .header-logo { width: 380px; max-width: 94%; }
+      .header-logo { width: 420px; max-width: 94%; }
       header.is-compact .header-logo { width: 260px; max-width: 82%; }
       .sticky-nav { padding: 0.42rem 0.3rem; }
       .sticky-nav-inner { gap: 0.2rem; }
@@ -1009,6 +1103,22 @@
   </main>
 
   <div id="confettiLayer" class="confetti-layer"></div>
+
+<!-- 右下フローティング連絡ボタン＆ポップアップ -->
+  <button type="button" class="contact-fab" onclick="openContactModal()" aria-label="誤情報・お問い合わせ">
+    <span>📩</span><span>誤情報・ご連絡</span>
+  </button>
+
+  <div id="contactModalBg" class="contact-modal-bg" onclick="if(event.target===this) closeContactModal()">
+    <div class="contact-modal" role="dialog" aria-modal="true" aria-labelledby="contactModalTitle">
+      <div class="contact-modal-head">
+        <h3 id="contactModalTitle">📩 誤情報のご報告・お問い合わせ</h3>
+        <button type="button" class="modal-close-btn" onclick="closeContactModal()" aria-label="閉じる">✕</button>
+      </div>
+      <div id="contactModalBody" class="contact-modal-body"></div>
+    </div>
+  </div>
+
   <footer id="siteFooter"></footer>
 
   <script src="data.js"></script>
@@ -1274,10 +1384,11 @@
 
     window.addEventListener("scroll", () => {
       const y = window.scrollY;
-      if (!isHeaderCompact && y > 130) {
+      const shrinkAt = window.innerWidth <= 640 ? 150 : 240;
+      if (!isHeaderCompact && y > shrinkAt) {
         isHeaderCompact = true;
         siteHeader.classList.add("is-compact");
-      } else if (isHeaderCompact && y < 10) {
+      } else if (isHeaderCompact && y < 15) {
         isHeaderCompact = false;
         siteHeader.classList.remove("is-compact");
       }
@@ -1660,12 +1771,22 @@
       backToAreaRoulette();
     }
 
+    function cryptoRand() {
+      if (window.crypto && window.crypto.getRandomValues) {
+        const arr = new Uint32Array(1);
+        window.crypto.getRandomValues(arr);
+        return arr[0] / 4294967296;
+      }
+      return Math.random();
+    }
+
     function backToAreaRoulette() {
       if (isSpinning) return;
       rouletteStep = 1;
       selectedArea = "";
       lastWinner = "";
       activePool = getAvailableAreas();
+      currentAngle = cryptoRand() * Math.PI * 2;
       document.getElementById("rouletteResult").classList.remove("show", "final");
       updateRouletteUI();
       drawWheel();
@@ -1807,7 +1928,7 @@
       if (rouletteStep === 1 && selectedArea) {
         rouletteStep = 2;
         activePool = getPrefsInArea(selectedArea);
-        currentAngle = -Math.PI / 2;
+        currentAngle = cryptoRand() * Math.PI * 2;
       }
 
       if (activePool.length === 0) return;
@@ -1818,10 +1939,20 @@
       document.getElementById("rouletteResult").classList.remove("show", "final");
 
       const n = activePool.length;
+      const slice = (Math.PI * 2) / n;
+
+      // 厳密に均等確率（1/n）で当選インデックスを先に抽選
+      const targetIdx = Math.floor(cryptoRand() * n);
+      // 当選扇形の内側（端ギリギリを避けた15%〜85%の位置）に止まる角度を逆算
+      const posInSlice = 0.15 + cryptoRand() * 0.70;
+      const desiredAngle = -Math.PI / 2 - (targetIdx + posInSlice) * slice;
+
       const startAngle = currentAngle;
-      const extraSpins = (6 + Math.floor(Math.random() * 4)) * Math.PI * 2;
-      const randomOffset = Math.random() * Math.PI * 2;
-      const totalDelta = extraSpins + randomOffset;
+      let deltaMod = (desiredAngle - startAngle) % (Math.PI * 2);
+      if (deltaMod <= 0) deltaMod += Math.PI * 2;
+
+      const extraSpins = (6 + Math.floor(cryptoRand() * 4)) * Math.PI * 2;
+      const totalDelta = extraSpins + deltaMod;
       const duration = rouletteStep === 1 ? 3800 : 4600;
       const startTime = performance.now();
       let prevIdx = getPointerIndex(currentAngle, n);
@@ -1843,9 +1974,7 @@
           requestAnimationFrame(step);
         } else {
           isSpinning = false;
-          const winIdx = getPointerIndex(currentAngle, n);
-          const winner = activePool[winIdx];
-          showStepResult(winner);
+          showStepResult(activePool[targetIdx]);
         }
       }
 
@@ -2079,6 +2208,50 @@
 
     document.getElementById("searchInput").addEventListener("input", renderAll);
     document.getElementById("prefSelect").addEventListener("change", renderAll);
+
+function openContactModal() {
+      const bg = document.getElementById("contactModalBg");
+      const body = document.getElementById("contactModalBody");
+      const rawUrl = (SITE_CONFIG.contactFormUrl || "").trim();
+
+      if (!rawUrl) {
+        body.innerHTML = `<p style="margin:0;">現在、連絡フォームを準備中です。</p>`;
+      } else if (rawUrl.includes("docs.google.com/forms/")) {
+        const base = rawUrl.split("?")[0];
+        const embedUrl = `${base}?embedded=true`;
+        body.innerHTML = `
+          <p style="margin:0 0 0.7rem; color:var(--muted-text); font-size:0.82rem;">
+            誤情報・タイムスタンプの間違い・掲載削除のご要望などがありましたら、以下のフォームよりご連絡ください。
+          </p>
+          <iframe class="contact-iframe" src="${esc(embedUrl)}" title="お問い合わせフォーム">読み込んでいます…</iframe>
+          <div style="text-align:center; margin-top:0.6rem;">
+            <a href="${esc(rawUrl)}" target="_blank" rel="noopener" style="font-size:0.8rem; color:var(--done-orange); font-weight:bold;">
+              表示されない場合は別タブで開く ↗
+            </a>
+          </div>
+        `;
+      } else {
+        body.innerHTML = `
+          <p style="margin:0 0 1rem;">
+            誤情報のご報告や掲載内容に関するご連絡は、以下の専用フォームより受け付けております。
+          </p>
+          <div style="text-align:center;">
+            <a href="${esc(rawUrl)}" target="_blank" rel="noopener" class="playlist-btn" style="background:var(--choco-brown);">
+              📝 連絡フォームを開く ↗
+            </a>
+          </div>
+        `;
+      }
+      bg.classList.add("open");
+    }
+
+    function closeContactModal() {
+      document.getElementById("contactModalBg").classList.remove("open");
+    }
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeContactModal();
+    });
 
     init();
   </script>

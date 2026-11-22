@@ -5,10 +5,9 @@
 const SITE_CONFIG = {
   title: "竹辺と一緒に47都道府県 〜美味しいもの見つけよう・食べよう〜",
   subtitle: "Vtuber「竹辺莉央」が毎月ルーレットで決まった都道府県のお土産を「見つけよう」で選び、「食べよう」で実食！\nここは経過と商品を検索できる非公式アーカイブサイトです。",
-  playlistId: "PLdS9Xt67FhZc37zpTZ0pQCYrDocpaWdEh",
-  lastUpdated: "2026年11月22日",
-  disclaimer: "当サイトは非公式ファンサイトであり、本人および所属事務所とは一切関係ありません。",
-
+playlistId: "PLdS9Xt67FhZc37zpTZ0pQCYrDocpaWdEh",
+  contactFormUrl: "https://docs.google.com/forms/d/e/1FAIpQLSeM_lG8y4OJxtwZsSVOc7gHTz_RqnGcbG76ImLir-kyEwbD0w/viewform?usp=publish-editor",
+  disclaimer: "当サイトは非公式ファンサイトであり、本人および所属事務所とは一切関係ありません。\nサイト制作・ロゴ・イラスト：@02ku_tabetai",
   // Googleスプレッドシート連携用（「リンクを知っている全員・閲覧者」の共有URL）
   sheetItemsCsvUrl: "https://docs.google.com/spreadsheets/d/193yK4RAnHHKavlZMwAaC0JX5S_Xrdd2PRhkdFqh-jq8/edit?gid=1644215093#gid=1644215093",
   sheetEpisodesCsvUrl: "https://docs.google.com/spreadsheets/d/193yK4RAnHHKavlZMwAaC0JX5S_Xrdd2PRhkdFqh-jq8/edit?gid=1483599386#gid=1483599386"
@@ -47,7 +46,8 @@ const EPISODES = [
   { no: 12, pref: "宮城",   selectUrl: "https://www.youtube.com/watch?v=z7rE7lqEBxs" },
   { no: 13, pref: "佐賀",   selectUrl: "https://www.youtube.com/watch?v=449-frgYr3k" },
   { no: 14, pref: "千葉",   selectUrl: "https://www.youtube.com/watch?v=KS1LPc5-B2M" },
-  { no: 15, pref: "福岡",   selectUrl: "https://www.youtube.com/watch?v=-n-rRzwOaKs", status: "next" }
+  { no: 15, pref: "福岡",   selectUrl: "https://www.youtube.com/watch?v=-n-rRzwOaKs" },
+  { no: 16, pref: "奈良",   selectUrl: "https://www.youtube.com/watch?v=-n-rRzwOaKs", status: "next" }
 ];
 
 const RAW_CSV_DATA = `
@@ -179,4 +179,16 @@ const RAW_CSV_DATA = `
 千葉,ピーナツペーストドレッシング,https://www.youtube.com/watch?v=EoXbENJ48Hw&t=5657s,調味料・ご飯のお供
 千葉,ネギイチバン,https://www.youtube.com/watch?v=EoXbENJ48Hw&t=6001s,調味料・ご飯のお供
 千葉,マッシュルームイチバン,https://www.youtube.com/watch?v=EoXbENJ48Hw&t=6377s,調味料・ご飯のお供
+福岡,水たき卵スープ,https://www.youtube.com/watch?v=zlSrsDsElVA&t=274s,スープ
+福岡,旬海王(有明海苔),https://www.youtube.com/watch?v=zlSrsDsElVA&t=1216s,調味料・ご飯のお供
+福岡,博多めんたい玉子焼,https://www.youtube.com/watch?v=zlSrsDsElVA&t=1862s,おつまみ・惣菜
+福岡,チロリアン,https://www.youtube.com/watch?v=zlSrsDsElVA&t=2449s,スイーツ・スナック
+福岡,めんべい プレーン,https://www.youtube.com/watch?v=zlSrsDsElVA&t=3079s,スイーツ・スナック
+福岡,ふくやラスク シュガーめんたい味,https://www.youtube.com/watch?v=zlSrsDsElVA&t=3871s,スイーツ・スナック
+福岡,ふくやラスク ガーリックめんたい味,https://www.youtube.com/watch?v=zlSrsDsElVA&t=4536s,スイーツ・スナック
+福岡,にわかせんぺい,https://www.youtube.com/watch?v=zlSrsDsElVA&t=4871s,スイーツ・スナック
+福岡,梅の香ひじき,https://www.youtube.com/watch?v=zlSrsDsElVA&t=5343s,調味料・ご飯のお供
+福岡,あごだし入り白だし,https://www.youtube.com/watch?v=zlSrsDsElVA&t=5867s,調味料・ご飯のお供
+福岡,からかもん,https://www.youtube.com/watch?v=zlSrsDsElVA&t=6482s,調味料・ご飯のお供
+福岡,小倉百年蔵のソース 合馬たけのこ ごまとわさび,https://www.youtube.com/watch?v=zlSrsDsElVA&t=7181s,調味料・ご飯のお供
 `;
