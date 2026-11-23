@@ -7,7 +7,7 @@ const SITE_CONFIG = {
   subtitle: "Vtuber「竹辺莉央」が毎月ルーレットで決まった都道府県のお土産を「見つけよう」で選び、「食べよう」で実食！\nここは経過と商品を検索できる非公式アーカイブサイトです。",
 playlistId: "PLdS9Xt67FhZc37zpTZ0pQCYrDocpaWdEh",
   contactFormUrl: "https://docs.google.com/forms/d/e/1FAIpQLSeM_lG8y4OJxtwZsSVOc7gHTz_RqnGcbG76ImLir-kyEwbD0w/viewform?usp=publish-editor",
-  disclaimer: "当サイトは非公式ファンサイトであり、本人および所属事務所とは一切関係ありません。\nサイト制作・ロゴ・イラスト：@02ku_tabetai",
+  disclaimer: "※当サイトはファンによる非公式アーカイブサイトであり、ご本人様および所属事務所様とは一切関係ありません。\n※アクセス解析のためにGoogleアナリティクス（Cookie）を使用しています。データは匿名で収集されており、個人を特定するものではありません。\nサイト制作・ロゴ・イラスト：@02ku_tabetai",
   // Googleスプレッドシート連携用（「リンクを知っている全員・閲覧者」の共有URL）
   sheetItemsCsvUrl: "https://docs.google.com/spreadsheets/d/193yK4RAnHHKavlZMwAaC0JX5S_Xrdd2PRhkdFqh-jq8/edit?gid=1644215093#gid=1644215093",
   sheetEpisodesCsvUrl: "https://docs.google.com/spreadsheets/d/193yK4RAnHHKavlZMwAaC0JX5S_Xrdd2PRhkdFqh-jq8/edit?gid=1483599386#gid=1483599386"
