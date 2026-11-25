@@ -736,7 +736,25 @@
       border: 1px solid transparent; font-weight: bold; white-space: nowrap;
     }
     .tag.pref { background: var(--unvisited); color: var(--choco-brown); border-color: #DFD5CA; }
-    .item-title { font-weight: bold; font-size: 0.95rem; word-break: break-word; }
+    .item-title-link {
+      font-weight: bold;
+      font-size: 0.95rem;
+      color: var(--choco-brown);
+      text-decoration: none;
+      border-bottom: 1px dashed #CDBFB2;
+      word-break: break-word;
+      transition: color 0.12s, border-color 0.12s;
+    }
+    .item-title-link:hover {
+      color: #D45B12;
+      border-bottom: 1.5px solid #D45B12;
+    }
+    .item-ext-mark {
+      font-size: 0.72rem;
+      color: var(--muted-text);
+      margin-left: 0.25rem;
+      font-weight: normal;
+    }
     .item-memo { font-size: 0.82rem; color: var(--muted-text); width: 100%; }
     .time-link {
       flex-shrink: 0; font-size: 0.8rem; text-decoration: none; padding: 0.3rem 0.8rem;
@@ -1495,13 +1513,28 @@
       `;
     }
 
+    function getProductLink(item) {
+      if (item.officialUrl && /^https?:\/\//i.test(item.officialUrl)) {
+        return { url: item.officialUrl, isOfficial: true };
+      }
+      const q = item.name.includes(item.pref) ? item.name : `${item.pref} ${item.name}`;
+      return {
+        url: `https://www.google.com/search?q=${encodeURIComponent(q)}`,
+        isOfficial: false
+      };
+    }
+
     function createItemRow(item, showPref = true) {
       const meta = CAT_META[item.category] || { icon: "🍽️", cls: "" };
       const hasTags = showPref || item.category;
+      const prodLink = getProductLink(item);
+      const linkTitle = prodLink.isOfficial
+        ? `${item.name} の公式サイトを開く`
+        : `「${item.pref} ${item.name}」をGoogleで検索`;
       return `
         <div class="item-row">
           <div class="item-main">
-            <span class="item-title">${esc(item.name)}</span>
+            <a class="item-title-link" href="${esc(prodLink.url)}" target="_blank" rel="noopener noreferrer" title="${esc(linkTitle)}">${esc(item.name)}<span class="item-ext-mark">🔍</span></a>
             ${item.memo ? `<span class="item-memo">${esc(item.memo)}</span>` : ""}
           </div>
           <div class="item-right">
@@ -2087,14 +2120,21 @@
 
         const url = (cols[2] || "").trim();
         const category = normalizeCategory(cols[3], name);
-        const memo = (cols[4] || "").trim();
+        const col4 = (cols[4] || "").trim();
+        const col5 = (cols[5] || "").trim();
+        let memo = col4;
+        let officialUrl = col5;
+        if (!officialUrl && /^https?:\/\//i.test(col4)) {
+          officialUrl = col4;
+          memo = "";
+        }
 
         const yt = parseYouTube(url);
         const ep = epByPref[pref];
         const pl = SITE_CONFIG.playlistId ? `&list=${SITE_CONFIG.playlistId}` : "";
         const urlWithPl = url && !url.includes("list=") && pl ? `${url}${pl}` : url;
 
-        const item = { pref, epNo: ep ? ep.no : null, name, url: urlWithPl, category, memo, ...yt };
+        const item = { pref, epNo: ep ? ep.no : null, name, url: urlWithPl, category, memo, officialUrl, ...yt };
         items.push(item);
         if (!prefMap[pref]) prefMap[pref] = [];
         prefMap[pref].push(item);
